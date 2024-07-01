@@ -1,5 +1,8 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+"use client";
+
+import Image from 'next/image';
+import styles from './page.module.css';
+import Headline from './components/Headline';
 
 export default function Home() {
   return (
@@ -65,7 +68,7 @@ export default function Home() {
         </a>
 
         <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
+          href="https://vercel.com/templates?framework=next.js?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
           className={styles.card}
           target="_blank"
           rel="noopener noreferrer"
@@ -89,6 +92,16 @@ export default function Home() {
             Instantly deploy your Next.js site to a shareable URL with Vercel.
           </p>
         </a>
+      </div>
+
+      <div>
+        <Headline
+          title={"요즘 한국에서 빵 많이 먹는다고?! 헐 대박!"}
+          uploadDate={"2024.05.26"}
+          viewCount={2}
+          source={"매일경제"}
+          categories={["경제", "정치"]}
+        />
       </div>
     </main>
   );
