@@ -40,7 +40,7 @@ const ColorTabs = ({ tabs }: ColorTabsProps) => {
           <Tab key={tab.value} value={tab.value} label={tab.label} />
         ))}
       </Tabs>
-      <Box sx={{ padding: 2 }}>
+      <Box sx={{ paddingTop: 2 }}>
         {selectedTab && selectedTab.content}
       </Box>
     </Box>
