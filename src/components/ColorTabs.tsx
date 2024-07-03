@@ -29,15 +29,10 @@ const ColorTabs = ({ tabs }: ColorTabsProps) => {
         value={value}
         onChange={handleChange}
         aria-label="primary tabs example"
+        indicatorColor="primary"
         sx={{
-          '& .MuiTabs-indicator': {
-            backgroundColor: color.brown_light,
-          },
           '& .MuiTab-root': {
-            color: color.gray_light,
-            '&.Mui-selected': {
-              color: color.brown_light,
-            },
+            color: color.gray_dark,
           },
         }}
       >
