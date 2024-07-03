@@ -6,7 +6,7 @@ const theme = createTheme({
     mode: 'light',
     primary: {
       main: color.brown_light,
-      contrastText: 'white',
+      contrastText: '#ffffff',
     },
     secondary: {
       main: color.gray_dark,
