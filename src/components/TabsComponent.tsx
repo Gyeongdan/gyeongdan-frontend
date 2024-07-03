@@ -2,7 +2,7 @@ import * as React from 'react';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
-import colors from '../../constants/color';
+import colors from '../constants/color';
 
 const tabData = [
   { value: 'economy_business', label: '경제 및 기업', content: '경제 및 기업 관련 내용' },
