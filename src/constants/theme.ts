@@ -5,7 +5,7 @@ const theme = createTheme({
   palette: {
     mode: 'light',
     primary: {
-      main: color.brown_light,
+      main: color.blue,
       contrastText: '#ffffff',
     },
     secondary: {
@@ -17,24 +17,35 @@ const theme = createTheme({
     fontFamily: 'Noto Sans, sans-serif',
     h1: {
       fontSize: '36px',
-      fontWeight: 'bold',
+      fontFamily: 'GmarketSansBold',
     },
     h2: {
-      fontSize: '24px',
-      fontWeight: 'bold',
+      fontSize: '36px',
     },
     h3: {
+      fontSize: '30px',
+      fontFamily: 'GongGothicMedium',
+    },
+    h4: {
       fontSize: '20px',
-      fontWeight: 'bold',
+      fontFamily: 'GongGothicLight',
+    },
+    h5: {
+      fontSize: '20px',
     },
     subtitle1: {
-      fontSize: '20px',
+      fontSize: '12px',
+      fontFamily: 'GmarketSansMedium',
     },
     body1: {
       fontSize: '16px',
+      fontFamily: 'GongGothicLight',
     },
     body2: {
       fontSize: '14px',
+    },
+    button: {
+      fontFamily: 'GmarketSansMedium',
     },
   },
 });
