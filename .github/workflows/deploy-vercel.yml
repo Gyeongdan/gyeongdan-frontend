@@ -1,0 +1,144 @@
+name: Deploy to Vercel
+
+concurrency:
+  group: ${{ github.ref }}
+  cancel-in-progress: true
+
+on:
+  push:
+    branches: [ "staging" ]
+
+env:
+  PROGRESS_SLACK_CHANNEL: C07BRCDNBMF             # Slack 채널 ID
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Post Slack Channel that Build Start
+        id: slack-build-start
+        uses: slackapi/slack-github-action@v1.23.0
+        with:
+          channel-id: ${{ env.PROGRESS_SLACK_CHANNEL }}
+          payload: |
+            {
+              "text": ":small_airplane: *Gyeongdan NextJS ${{ github.ref_name }}* 배포가 시작되었습니다.",
+              "blocks": [
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": ":mega: *Gyeongdan NextJS ${{ github.ref_name }}* 배포가 시작되었습니다."
+                  }
+                },
+                {
+                  "type": "actions",
+                  "elements": [
+                    {
+                      "type": "button",
+                      "text": {
+                        "type": "plain_text",
+                        "emoji": true,
+                        "text": "깃허브액션에서 확인하기."
+                      },
+                      "value": "click_me_123",
+                      "url": "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+                    }
+                  ]
+                }
+              ]
+            }
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.PROGRESS_SLACK_CHANNEL_TOKEN }}
+
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # Vercel 배포 단계 추가
+      - name: Deploy to Vercel
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+        run: |
+          npm install -g vercel
+          vercel --prod --token=$VERCEL_TOKEN --confirm
+
+      - name: Post Slack Channel that Build Success
+        if: success()
+        id: slack-build-success
+        uses: slackapi/slack-github-action@v1.23.0
+        with:
+          channel-id: ${{ env.PROGRESS_SLACK_CHANNEL }}
+          payload: |
+            {
+              "text": ":meow_party: *Gyeongdan NextJS ${{ github.ref_name }}* 배포가 성공했습니다.",
+              "blocks": [
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": ":meow_party: *Gyeongdan NextJS ${{ github.ref_name }}* 배포가 성공했습니다."
+                  }
+                },
+                {
+                  "type": "actions",
+                  "elements": [
+                    {
+                      "type": "button",
+                      "text": {
+                        "type": "plain_text",
+                        "emoji": true,
+                        "text": "깃허브액션에서 확인하기."
+                      },
+                      "style": "primary",
+                      "value": "click_me_123",
+                      "url": "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+                    }
+                  ]
+                }
+              ]
+            }
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.PROGRESS_SLACK_CHANNEL_TOKEN }}
+
+      - name: Post Slack Channel that Build Fail
+        if: failure()
+        id: slack-build-fail
+        uses: slackapi/slack-github-action@v1.23.0
+        with:
+          channel-id: ${{ env.PROGRESS_SLACK_CHANNEL }}
+          payload: |
+            {
+              "text": ":meow_knife: *Gyeongdan NextJS ${{ github.ref_name }}* 배포가 실패했습니다.",
+              "blocks": [
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": ":meow_knife: *Gyeongdan NextJS ${{ github.ref_name }}* 배포가 실패했습니다."
+                  }
+                },
+                {
+                  "type": "actions",
+                  "elements": [
+                    {
+                      "type": "button",
+                      "text": {
+                        "type": "plain_text",
+                        "emoji": true,
+                        "text": "깃허브액션에서 확인하기."
+                      },
+                      "style": "danger",
+                      "value": "click_me_123",
+                      "url": "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+                    }
+                  ]
+                }
+              ]
+            }
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.PROGRESS_SLACK_CHANNEL_TOKEN }}
