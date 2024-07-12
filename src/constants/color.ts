@@ -1,7 +1,7 @@
 const color = {
-  brown_light: '#D8D1C5',
-  gray_light: '#BDBDBD',
-  gray_dark: '#666666',
+  blue: '#4187FF',
+  gray_light: '#F8F8F8',
+  gray_dark: '#3E3E3E',
 };
 
 export default color;
