@@ -1,7 +1,7 @@
 import { useState, SyntheticEvent } from 'react';
-import Tabs from '@mui/material/Tabs';
-import Tab from '@mui/material/Tab';
-import Box from '@mui/material/Box';
+
+import { Box, Tab, Tabs } from '@mui/material';
+
 import color from '@/constants/color';
 
 interface TabData {
@@ -26,8 +26,6 @@ const ColorTabs = ({ tabs }: ColorTabsProps) => {
   return (
     <Box sx={{ width: '100%' }}>
       <Tabs
-        value={value}
-        onChange={handleChange}
         aria-label="primary tabs example"
         indicatorColor="primary"
         sx={{
@@ -35,14 +33,14 @@ const ColorTabs = ({ tabs }: ColorTabsProps) => {
             color: color.gray_dark,
           },
         }}
+        value={value}
+        onChange={handleChange}
       >
         {tabs.map((tab) => (
-          <Tab key={tab.value} value={tab.value} label={tab.label} />
+          <Tab key={tab.value} label={tab.label} value={tab.value} />
         ))}
       </Tabs>
-      <Box sx={{ paddingTop: 2 }}>
-        {selectedTab && selectedTab.content}
-      </Box>
+      <Box sx={{ paddingTop: 2 }}>{selectedTab && selectedTab.content}</Box>
     </Box>
   );
 };
