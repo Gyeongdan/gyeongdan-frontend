@@ -1,15 +1,18 @@
 {
   "parser": "@typescript-eslint/parser",
-  "plugins": ["@typescript-eslint"],
+  "plugins": ["@typescript-eslint", "react", "prettier", "import"],
   "extends": [
-    "next/core-web-vitals",
-    "plugin:@typescript-eslint/recommended",
     "airbnb",
     "airbnb/hooks",
     "airbnb-typescript",
+    "next/core-web-vitals",
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:react/recommended",
     "plugin:prettier/recommended",
     "plugin:import/typescript",
-    "plugin:import/recommended"
+    "plugin:import/recommended",
+    "prettier"
   ],
   "parserOptions": {
     "project": "./tsconfig.json"
@@ -22,6 +25,7 @@
       }
     ],
     "react/react-in-jsx-scope": "off",
+    "react/jsx-filename-extension": ["warn", { "extensions": [".ts", ".tsx"] }],
     "import/extensions": "off",
     "react/function-component-definition": [
       "error",
@@ -33,12 +37,29 @@
       "error",
       {
         "groups": ["builtin", "external", "internal", ["sibling", "parent", "index"], "type"],
+        "pathGroups": [
+          { "pattern": "react*", "group": "builtin" },
+          { "pattern": "react*/**", "group": "builtin" },
+          { "pattern": "next*", "group": "builtin" },
+          { "pattern": "next*/**", "group": "builtin" }
+        ],
         "pathGroupsExcludedImportTypes": [],
         "newlines-between": "always",
         "alphabetize": {
           "order": "asc",
           "caseInsensitive": true
         }
+      }
+    ],
+    "react/jsx-sort-props": [
+      "error",
+      {
+        "callbacksLast": true,
+        "shorthandFirst": true,
+        "shorthandLast": false,
+        "ignoreCase": true,
+        "noSortAlphabetically": false,
+        "reservedFirst": true
       }
     ]
   },
