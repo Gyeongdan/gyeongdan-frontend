@@ -1,7 +1,16 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ['wimg.mk.co.kr', 'img.hankyung.com'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'wimg.mk.co.kr',
+      },
+      {
+        protocol: 'https',
+        hostname: 'img.hankyung.com',
+      },
+    ],
   },
 };
 
