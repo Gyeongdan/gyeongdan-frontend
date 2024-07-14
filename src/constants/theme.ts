@@ -57,6 +57,7 @@ const theme = createTheme({
         body: {
           margin: 0,
           padding: 0,
+          overflowX: 'hidden',
         },
       },
     },
