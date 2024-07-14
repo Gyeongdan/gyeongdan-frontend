@@ -11,8 +11,8 @@ const Header = () => {
       justifyContent="space-between"
       maxHeight="100px"
       maxWidth="100%"
-      p={2}
-      px={5}
+      p={3}
+      px={6}
     >
       <Box display="flex">
         <Typography variant="h1">경단</Typography>
