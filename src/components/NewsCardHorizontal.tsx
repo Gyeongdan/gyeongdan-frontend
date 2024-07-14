@@ -42,8 +42,8 @@ const NewsCardHorizontal = ({ date, title, description, imageUrl }: NewsCardHori
           {description}
         </Typography>
       </Stack>
-      <Box borderRadius={2} height={130} ml={3} mt={2} overflow="hidden" position="relative" width={450}>
-        <Image fill alt="articleImage" sizes="100%" src={imageUrl} style={{ objectFit: 'cover' }} />
+      <Box borderRadius={2} height={130} minWidth={230} ml={3} mt={2} overflow="hidden" position="relative">
+        <Image fill priority alt="articleImage" sizes="100%" src={imageUrl} style={{ objectFit: 'cover' }} />
       </Box>
     </Stack>
   );
