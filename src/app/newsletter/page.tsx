@@ -17,10 +17,10 @@ const Page = () => {
   const [selectedTab, setSelectedTab] = useState(articleCategory[0]);
 
   return (
-    <Stack>
+    <Box>
       <GradientBox sx={{ height: '150px' }} />
-      <Stack direction="row">
-        <Stack mb={4} mt={4} mx={16} width="53%">
+      <Stack direction="row" justifyContent="space-between" mx={16}>
+        <Stack mb={4} mt={4} width="65%">
           <ColorTabs selected={selectedTab} tabs={articleCategory} onChange={setSelectedTab}>
             {articleCategory.map((tab) => (
               <Box key={tab.value} hidden={tab.value !== selectedTab.value}>
@@ -50,14 +50,16 @@ const Page = () => {
             ))}
           </ColorTabs>
         </Stack>
-        <Divider flexItem orientation="vertical" sx={{ bgcolor: color.divider, opacity: 0.2 }} />
-        <Stack ml={6} mt={6} spacing={6} width="17%">
-          <Suggestions content={suggestionData} title="지민님에게 추천드려요!" />
-          <Suggestions content={suggestionData} title="지민님과 비슷한 유형이 관심있어요!" />
-          <Suggestions content={suggestionData} title="지금 인기있는 기사" />
+        <Stack direction="row" width="25%">
+          <Divider flexItem orientation="vertical" sx={{ bgcolor: color.divider, opacity: 0.2 }} />
+          <Stack mt={6} pl={6} spacing={6} width="100%">
+            <Suggestions content={suggestionData} title="지민님에게 추천드려요!" />
+            <Suggestions content={suggestionData} title="지민님과 비슷한 유형이 관심있어요!" />
+            <Suggestions content={suggestionData} title="지금 인기있는 기사" />
+          </Stack>
         </Stack>
       </Stack>
-    </Stack>
+    </Box>
   );
 };
 
