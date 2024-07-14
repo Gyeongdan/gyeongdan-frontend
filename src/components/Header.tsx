@@ -1,25 +1,25 @@
-import { Box, Button, Stack, Typography } from '@mui/material';
+import { Button, Stack, Typography } from '@mui/material';
 
 import color from '@/constants/color';
 import category from '@/mocks/category';
 
 const Header = () => {
   return (
-    <Box
+    <Stack
       alignItems="center"
-      display="flex"
+      direction="row"
       justifyContent="space-between"
       maxHeight="100px"
       maxWidth="100%"
       p={3}
       px={6}
     >
-      <Box display="flex">
+      <Stack direction="row">
         <Typography variant="h1">경단</Typography>
         <Typography color={color.gray_dark} mt={2} variant="subtitle1">
           경제를 단순하게
         </Typography>
-      </Box>
+      </Stack>
       <Stack direction="row" mt={2} spacing={3}>
         {category.map((item) => (
           <Button
@@ -40,7 +40,7 @@ const Header = () => {
           LOGIN
         </Button>
       </Stack>
-    </Box>
+    </Stack>
   );
 };
 
