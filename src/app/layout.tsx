@@ -1,3 +1,7 @@
+import { Box } from '@mui/material';
+
+import Header from '@/components/Header';
+
 import ClientThemeProvider from './ClientThemeProvider';
 import '../../public/fonts.css';
 
@@ -10,7 +14,12 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <html lang="en">
       <body>
-        <ClientThemeProvider>{children}</ClientThemeProvider>
+        <ClientThemeProvider>
+          <Box height="100vh" minHeight="100vh" sx={{ overflowX: 'hidden' }} width="100vw">
+            <Header />
+            {children}
+          </Box>
+        </ClientThemeProvider>
       </body>
     </html>
   );
