@@ -15,7 +15,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
     <html lang="en">
       <body>
         <ClientThemeProvider>
-          <Box height="100vh" minHeight="100vh" sx={{ overflowX: 'hidden' }} width="100vw">
+          <Box minHeight="100vh" sx={{ overflowX: 'hidden' }} width="100vw">
             <Header />
             {children}
           </Box>
