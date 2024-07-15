@@ -8,7 +8,7 @@ const TagChip = ({ label }: { label: string }) => {
       color="primary"
       label={label}
       sx={{
-        background: `linear-gradient(${color.gradient_blue_dark}, ${color.gradient_blue_light})`
+        background: `linear-gradient(${color.gradient_blue_dark}, ${color.gradient_blue_light})`,
       }}
     />
   );
