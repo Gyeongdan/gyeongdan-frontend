@@ -1,15 +1,13 @@
-import { Typography, Box } from '@mui/material';
-import TagChip from './TagChip';
+import { Box, Typography } from '@mui/material';
 
 interface HeadlineProps {
   title: string;
   uploadDate: string;
   viewCount: number;
   source: string;
-  categories: string[];
 }
 
-const Headline: React.FC<HeadlineProps> = ({ title, uploadDate, viewCount, source, categories }) => {
+const Headline = ({ title, uploadDate, viewCount, source }:HeadlineProps) => {
   return (
     <Box>
       <Typography variant="h1" sx={{ fontSize: '2rem', fontWeight: 'bold', marginBottom: '1rem' }}>
@@ -19,11 +17,6 @@ const Headline: React.FC<HeadlineProps> = ({ title, uploadDate, viewCount, sourc
         <Typography variant="body1" sx={{ marginRight: '0.5rem' }}>
           {uploadDate} | 조회 {viewCount}회 | {source}
         </Typography>
-        <Box sx={{ display: 'flex', gap: '0.5rem' }}>
-          {categories.map((category) => (
-            <TagChip key={category} label={category} />
-          ))}
-        </Box>
       </Box>
     </Box>
   );
