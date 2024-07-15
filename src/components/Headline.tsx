@@ -1,4 +1,4 @@
-import { Box, Typography } from '@mui/material';
+import { Box, Typography, Stack } from '@mui/material';
 
 interface HeadlineProps {
   title: string;
@@ -10,14 +10,14 @@ interface HeadlineProps {
 const Headline = ({ title, uploadDate, viewCount, source }: HeadlineProps) => {
   return (
     <Box>
-      <Typography sx={{ fontSize: '2rem', fontWeight: 'bold', marginBottom: '1rem' }} variant="h1">
+      <Typography mb={1} variant="h1">
         {title}
       </Typography>
-      <Box sx={{ display: 'flex', alignItems: 'center', marginBottom: '1rem' }}>
-        <Typography sx={{ marginRight: '0.5rem' }} variant="body1">
+      <Stack alignItems="center" direction="row">
+        <Typography variant="h4">
           {uploadDate} | 조회 {viewCount}회 | {source}
         </Typography>
-      </Box>
+      </Stack>
     </Box>
   );
 };
