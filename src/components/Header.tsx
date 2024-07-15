@@ -37,9 +37,12 @@ const Header = () => {
             {item.label}
           </Link>
         ))}
-        <Button color="primary" sx={{ width: '100px' }} variant="outlined">
-          LOGIN
-        </Button>
+
+        <Link href="/login" underline="none">
+          <Button color="primary" sx={{ width: '100px' }} variant="outlined">
+            LOGIN
+          </Button>
+        </Link>
       </Stack>
     </Stack>
   );
