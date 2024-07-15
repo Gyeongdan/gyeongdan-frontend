@@ -1,6 +1,6 @@
 import Image from 'next/image';
 
-import { Box, Typography } from '@mui/material';
+import { Box, Stack, Typography } from '@mui/material';
 
 import color from '@/constants/color';
 
@@ -13,8 +13,8 @@ interface NewsCardHorizontalProps {
 
 const NewsCardHorizontal = ({ date, title, description, imageUrl }: NewsCardHorizontalProps) => {
   return (
-    <Box alignItems="center" display="flex" flexDirection="row" height="180px">
-      <Box display="flex" flexDirection="column">
+    <Stack alignItems="center" direction="row" height="180px">
+      <Stack>
         <Typography color={color.blue} fontWeight="bold" mb={1} variant="body2">
           {date}
         </Typography>
@@ -41,11 +41,11 @@ const NewsCardHorizontal = ({ date, title, description, imageUrl }: NewsCardHori
         >
           {description}
         </Typography>
+      </Stack>
+      <Box borderRadius={2} height={130} minWidth={230} ml={3} mt={2} overflow="hidden" position="relative">
+        <Image fill priority alt="articleImage" sizes="100%" src={imageUrl} style={{ objectFit: 'cover' }} />
       </Box>
-      <Box borderRadius={2} height={130} ml={3} mt={2} overflow="hidden" position="relative" width={450}>
-        <Image fill alt="articleImage" src={imageUrl} style={{ objectFit: 'cover' }} />
-      </Box>
-    </Box>
+    </Stack>
   );
 };
 

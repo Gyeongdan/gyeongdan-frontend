@@ -1,46 +1,47 @@
-import { Box, Button, Stack, Typography } from '@mui/material';
+import { Button, Link, Stack, Typography } from '@mui/material';
 
+import { mainCategory } from '@/constants/category';
 import color from '@/constants/color';
-import category from '@/mocks/category';
 
 const Header = () => {
   return (
-    <Box
+    <Stack
       alignItems="center"
-      display="flex"
+      direction="row"
       justifyContent="space-between"
       maxHeight="100px"
       maxWidth="100%"
-      p={2}
-      px={5}
+      p={3}
+      px={6}
     >
-      <Box display="flex">
+      <Stack direction="row">
         <Typography variant="h1">경단</Typography>
         <Typography color={color.gray_dark} mt={2} variant="subtitle1">
           경제를 단순하게
         </Typography>
-      </Box>
-      <Stack direction="row" mt={2} spacing={3}>
-        {category.map((item) => (
-          <Button
+      </Stack>
+      <Stack alignItems="center" direction="row" mt={2} spacing={6}>
+        {mainCategory.map((item) => (
+          <Link
             key={item.id}
+            color={color.gray_dark}
+            href={item.path}
             sx={{
               '&:hover': {
                 backgroundColor: 'transparent',
               },
             }}
-            variant="text"
+            underline="none"
+            variant="h4"
           >
-            <Typography color={color.gray_dark} variant="h4">
-              {item.label}
-            </Typography>
-          </Button>
+            {item.label}
+          </Link>
         ))}
         <Button color="primary" sx={{ width: '100px' }} variant="outlined">
           LOGIN
         </Button>
       </Stack>
-    </Box>
+    </Stack>
   );
 };
 

@@ -1,5 +1,3 @@
-import { useState, SyntheticEvent } from 'react';
-
 import { Box, Tab, Tabs } from '@mui/material';
 
 import color from '@/constants/color';
@@ -7,24 +5,25 @@ import color from '@/constants/color';
 interface TabData {
   value: string;
   label: string;
-  content: React.ReactNode;
 }
 
 interface ColorTabsProps {
   tabs: TabData[];
+  selected: TabData;
+  children: React.ReactNode;
+  onChange: (value: TabData) => void;
 }
 
-const ColorTabs = ({ tabs }: ColorTabsProps) => {
-  const [value, setValue] = useState<string>(tabs[0].value);
-
-  const handleChange = (event: SyntheticEvent, newValue: string) => {
-    setValue(newValue);
+const ColorTabs = ({ tabs, selected, children, onChange }: ColorTabsProps) => {
+  const handleChange = (event: React.SyntheticEvent, value: string) => {
+    const selectedTab = tabs.find((tab) => tab.value === value);
+    if (selectedTab) {
+      onChange(selectedTab);
+    }
   };
 
-  const selectedTab = tabs.find((tab) => tab.value === value);
-
   return (
-    <Box sx={{ width: '100%' }}>
+    <Box>
       <Tabs
         aria-label="primary tabs example"
         indicatorColor="primary"
@@ -33,14 +32,14 @@ const ColorTabs = ({ tabs }: ColorTabsProps) => {
             color: color.gray_dark,
           },
         }}
-        value={value}
+        value={selected.value}
         onChange={handleChange}
       >
         {tabs.map((tab) => (
-          <Tab key={tab.value} label={tab.label} value={tab.value} />
+          <Tab key={tab.value} label={tab.label} sx={{ fontSize: '20px' }} value={tab.value} />
         ))}
       </Tabs>
-      <Box sx={{ paddingTop: 2 }}>{selectedTab && selectedTab.content}</Box>
+      <Box sx={{ paddingTop: 2 }}>{selected && children}</Box>
     </Box>
   );
 };

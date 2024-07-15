@@ -21,8 +21,4 @@ const GradientBox = ({ children, ...props }: GradientBoxProps) => {
   );
 };
 
-GradientBox.defaultProps = {
-  children: null,
-};
-
 export default GradientBox;
