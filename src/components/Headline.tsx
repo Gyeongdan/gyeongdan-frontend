@@ -7,14 +7,14 @@ interface HeadlineProps {
   source: string;
 }
 
-const Headline = ({ title, uploadDate, viewCount, source }:HeadlineProps) => {
+const Headline = ({ title, uploadDate, viewCount, source }: HeadlineProps) => {
   return (
     <Box>
-      <Typography variant="h1" sx={{ fontSize: '2rem', fontWeight: 'bold', marginBottom: '1rem' }}>
+      <Typography sx={{ fontSize: '2rem', fontWeight: 'bold', marginBottom: '1rem' }} variant="h1">
         {title}
       </Typography>
       <Box sx={{ display: 'flex', alignItems: 'center', marginBottom: '1rem' }}>
-        <Typography variant="body1" sx={{ marginRight: '0.5rem' }}>
+        <Typography sx={{ marginRight: '0.5rem' }} variant="body1">
           {uploadDate} | 조회 {viewCount}회 | {source}
         </Typography>
       </Box>
