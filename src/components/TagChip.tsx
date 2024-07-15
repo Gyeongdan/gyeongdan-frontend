@@ -1,15 +1,13 @@
 import Chip from '@mui/material/Chip';
-import { useTheme } from '@mui/material/styles';
+import color from '@/constants/color';
 
 const TagChip = ({ label }: { label: string }) => {
-  const theme = useTheme();
-
   return (
     <Chip
       label={label}
       color="primary"
       sx={{
-        color: '#000000',
+        background: `linear-gradient(${color.gradient_blue_dark}, ${color.gradient_blue_light})`,
         display: 'flex',
         alignItems: 'center',
       }}
