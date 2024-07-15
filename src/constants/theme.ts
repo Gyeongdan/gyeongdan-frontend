@@ -51,6 +51,17 @@ const theme = createTheme({
       fontFamily: 'GmarketSansMedium',
     },
   },
+  components: {
+    MuiCssBaseline: {
+      styleOverrides: {
+        body: {
+          margin: 0,
+          padding: 0,
+          overflowX: 'hidden',
+        },
+      },
+    },
+  },
 });
 
 export default theme;
