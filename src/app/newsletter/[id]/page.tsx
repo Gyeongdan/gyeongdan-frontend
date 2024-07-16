@@ -28,7 +28,7 @@ const Page = () => {
     },
   ];
 
-  const renderContentWithTooltips = (content) => {
+  const renderContentWithTooltips = (content: string) => {
     const words = content.split(/(\s+)/);
     return words.map((word, index) => {
       const cleanWord = word.replace(/[.,/#!$%^&*;:{}=\-_`~()]/g, '').trim();
