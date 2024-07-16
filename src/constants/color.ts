@@ -5,6 +5,7 @@ const color = {
   gray_dark: '#3E3E3E',
   gradient_blue_dark: '#1D71F1',
   gradient_blue_light: '#1AC6FB',
+  transport_white: '#FFFFFF66',
 };
 
 export default color;
