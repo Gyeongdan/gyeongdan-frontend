@@ -55,7 +55,6 @@ const Header = () => {
             height="100px"
             justifyContent="space-between"
             maxWidth="100%"
-            p={3}
             px={6}
           >
             <Typography variant="h1">경단</Typography>
@@ -63,7 +62,7 @@ const Header = () => {
               경제를 단순하게
             </Typography>
           </Stack>
-          <Stack alignItems="center" direction="row" mt={2} spacing={6}>
+          <Stack alignItems="center" direction="row" mt={2} px={6} spacing={6}>
             {mainCategory.map((item) => (
               <Link
                 key={item.id}
