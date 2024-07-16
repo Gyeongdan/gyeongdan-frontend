@@ -38,7 +38,6 @@ const CommentItem = ({ comment, index, isCharacter, isChat, isStroke, isFilled }
       }}
     >
       <CommentCard
-        animate
         content={comment.content}
         isCharacter={isCharacter && index === 0}
         isChat={isChat}
