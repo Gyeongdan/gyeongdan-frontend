@@ -29,20 +29,20 @@ const Page = () => {
   ];
 
   const renderContentWithTooltips = (content: string) => {
+    let count = 0;
     const words = content.split(/(\s+)/);
-    return words.map((word, index) => {
+    return words.map((word) => {
       const cleanWord = word.replace(/[.,/#!$%^&*;:{}=\-_`~()]/g, '').trim();
       const phrase = phrasesContent.find(({ term }) => cleanWord.includes(term));
+      count += 1;
       if (phrase) {
-        // eslint-disable-next-line react/no-array-index-key
         return (
-          <ColorTooltip key={`${word}-${index}-${Math.random()}`} arrow title={phrase.definition}>
+          <ColorTooltip key={`${cleanWord}-${count}`} arrow title={phrase.definition}>
             <span style={{ textDecoration: 'underline', cursor: 'pointer' }}>{word}</span>
           </ColorTooltip>
         );
       }
-      // eslint-disable-next-line react/no-array-index-key
-      return <span key={`${word}-${index}-${Math.random()}`}>{word}</span>;
+      return <span key={`${cleanWord}-${count}`}>{word}</span>;
     });
   };
 
@@ -86,7 +86,7 @@ const Page = () => {
             </Card>
           </Box>
           <h3 style={{ color: color.blue }}>AI 산지니가 선별한 기사속 경단어</h3>
-          <CommentList isCharacter isChat comments={comments} />
+          <CommentList isCharacter isChat comments={comments.map((comment) => ({ ...comment, key: comment.id }))} />
         </Box>
       </Container>
     </Box>

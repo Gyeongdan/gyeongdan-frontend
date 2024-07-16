@@ -2,8 +2,7 @@
 
 import React from 'react';
 
-import { Tooltip, tooltipClasses, TooltipProps } from '@mui/material';
-import { styled } from '@mui/system';
+import { Tooltip, tooltipClasses, TooltipProps, styled } from '@mui/material';
 
 const ColorTooltip = styled(({ className, title, arrow, placement, children }: TooltipProps) => (
   <Tooltip arrow={arrow} classes={{ popper: className }} placement={placement} title={title}>
