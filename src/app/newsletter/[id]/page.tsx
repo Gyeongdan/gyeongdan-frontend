@@ -5,20 +5,33 @@ import Image from 'next/image';
 import { Box, Card, CardContent, Container, Typography } from '@mui/material';
 
 import CommentCard from '@/components/CommentCard';
+import StyledGradientBox from '@/components/GradientBox';
 import Headline from '@/components/Headline';
 import color from '@/constants/color';
 import articleData from '@/mocks/article';
 
 const Page = () => {
   return (
-    <Box
-      color={color.gray_dark}
-      sx={{
-        background: `linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgba(${parseInt(color.gradient_blue_dark.slice(1, 3), 16)}, ${parseInt(color.gradient_blue_dark.slice(3, 5), 16)}, ${parseInt(color.gradient_blue_dark.slice(5, 7), 16)}, 0.1) 25%, rgba(${parseInt(color.gradient_blue_light.slice(1, 3), 16)}, ${parseInt(color.gradient_blue_light.slice(3, 5), 16)}, ${parseInt(color.gradient_blue_light.slice(5, 7), 16)}, 0.1) 100%)`,
-        minHeight: '100vh',
-      }}
-    >
-      <Container maxWidth="md" sx={{ padding: '2rem', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+    <Box sx={{ position: 'relative', minHeight: '100vh' }}>
+      {' '}
+      {/* 부모 요소를 relative로 설정 */}
+      <StyledGradientBox
+        sx={{
+          zIndex: -1,
+          position: 'absolute',
+        }}
+      />
+      <Container
+        maxWidth="md"
+        sx={{
+          padding: '2rem',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          position: 'relative',
+          zIndex: 1,
+        }}
+      >
         <Box sx={{ width: '100%', maxWidth: '600px' }}>
           <Box sx={{ marginBottom: '2rem' }}>
             <Headline
