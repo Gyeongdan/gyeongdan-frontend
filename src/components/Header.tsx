@@ -66,8 +66,8 @@ const Header = () => {
             ))}
 
             <Link href="/login" underline="none">
-              <Button color="primary" variant="outlined">
-                LOGIN
+              <Button color="primary" sx={{ width: '100px' }} variant="outlined">
+              LOGIN
               </Button>
             </Link>
           </Stack>
