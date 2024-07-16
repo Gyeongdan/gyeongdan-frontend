@@ -13,8 +13,6 @@ import articleData from '@/mocks/article';
 const Page = () => {
   return (
     <Box sx={{ position: 'relative', minHeight: '100vh' }}>
-      {' '}
-      {/* 부모 요소를 relative로 설정 */}
       <StyledGradientBox
         sx={{
           zIndex: -1,
