@@ -34,7 +34,7 @@ const theme = createTheme({
     },
     h5: {
       fontSize: '20px',
-      fontWeight: '800',
+      fontWeight: 'bold',
     },
     subtitle1: {
       fontSize: '12px',
