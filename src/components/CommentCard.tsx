@@ -23,14 +23,14 @@ const CommentCard = ({
   return (
     <Stack alignItems="center" direction="row">
       {isChat && (
-        <Box height={75} position="relative" width={75}>
+        <Box flexShrink={0} height={75} position="relative" width={75}>
           {isCharacter && (
             <Image fill alt="Character Image" sizes="100%" src="/image/sanjinee.png" style={{ objectFit: 'cover' }} />
           )}
         </Box>
       )}
       {!isChat && isCharacter && (
-        <Box height={75} position="relative" width={75}>
+        <Box flexShrink={0} height={75} position="relative" width={75}>
           <Image fill alt="Character Image" sizes="100%" src="/image/sanjinee.png" style={{ objectFit: 'cover' }} />
         </Box>
       )}
@@ -40,8 +40,11 @@ const CommentCard = ({
         padding="2px"
         sx={{
           background: isStroke ? `linear-gradient(${color.gradient_blue_dark}, ${color.gradient_blue_light})` : 'none',
+          display: 'flex',
+          alignItems: 'center',
+          maxWidth: '100%',
+          overflow: 'hidden',
         }}
-        width="100%"
       >
         <Box
           borderRadius="1.1rem"
@@ -50,10 +53,19 @@ const CommentCard = ({
             background: isFilled
               ? `linear-gradient(${color.gradient_blue_dark}, ${color.gradient_blue_light})`
               : 'white',
-            display: isChat ? 'inline-block' : 'block',
+            display: 'flex',
+            alignItems: 'center',
+            maxWidth: '100%',
+            overflow: 'hidden',
           }}
         >
-          <Typography color={isFilled ? 'white' : 'black'} variant="body2" whiteSpace="pre-line">
+          <Typography
+            color={isFilled ? 'white' : 'black'}
+            fontFamily="GmarketSansMedium"
+            sx={{ wordBreak: 'break-word' }}
+            variant="body2"
+            whiteSpace="pre-line"
+          >
             {content}
           </Typography>
         </Box>
