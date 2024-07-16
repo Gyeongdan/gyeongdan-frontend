@@ -50,8 +50,10 @@ const Page = () => {
     <Box sx={{ position: 'relative', minHeight: '100vh' }}>
       <StyledGradientBox
         sx={{
-          zIndex: -1,
           position: 'absolute',
+          width: '100%',
+          height: '100%',
+          zIndex: -1,
         }}
       />
       <Container
