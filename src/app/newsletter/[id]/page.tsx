@@ -33,14 +33,15 @@ const Page = () => {
     return words.map((word, index) => {
       const cleanWord = word.replace(/[.,/#!$%^&*;:{}=\-_`~()]/g, '').trim();
       const phrase = phrasesContent.find(({ term }) => cleanWord.includes(term));
-
       if (phrase) {
+        // eslint-disable-next-line react/no-array-index-key
         return (
           <ColorTooltip key={`${word}-${index}-${Math.random()}`} arrow title={phrase.definition}>
             <span style={{ textDecoration: 'underline', cursor: 'pointer' }}>{word}</span>
           </ColorTooltip>
         );
       }
+      // eslint-disable-next-line react/no-array-index-key
       return <span key={`${word}-${index}-${Math.random()}`}>{word}</span>;
     });
   };
