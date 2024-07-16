@@ -87,7 +87,7 @@ const Page = () => {
               </CardContent>
             </Card>
           </Box>
-          <h3 style={{ color: color.blue }}>AI 산지니가 선별한 기사속 경단어</h3>
+          <h3 style={{ color: color.blue }}>AI 산지니가 선별한 기사 속 경단어</h3>
           <CommentList isCharacter isChat comments={comments.map((comment) => ({ ...comment, key: comment.id }))} />
         </Box>
       </Container>
