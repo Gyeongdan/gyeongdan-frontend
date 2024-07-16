@@ -15,7 +15,7 @@ const theme = createTheme({
   },
 
   typography: {
-    fontFamily: 'Noto Sans, sans-serif',
+    fontFamily: 'Noto Sans KR, sans-serif',
     h1: {
       fontSize: '36px',
       fontFamily: 'GmarketSansBold',

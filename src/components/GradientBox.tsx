@@ -7,10 +7,18 @@ interface GradientBoxProps extends BoxProps {
 }
 
 const StyledGradientBox = styled(Box)({
-  background: 'linear-gradient(rgba(29, 112, 241, 0), rgba(26, 197, 251, 1))',
-  opacity: 0.2,
-  height: '100%',
-  width: '100%',
+  position: 'relative',
+  '&::before': {
+    content: '""',
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    width: '100%',
+    height: '100%',
+    background: 'linear-gradient(to bottom, rgba(29, 112, 241, 0), rgba(26, 197, 251, 1))',
+    opacity: 0.2,
+    zIndex: -1,
+  },
 });
 
 const GradientBox = ({ children, ...props }: GradientBoxProps) => {
