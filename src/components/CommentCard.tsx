@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import React from 'react';
 
 import { Box, Stack, Typography } from '@mui/material';
 
@@ -9,13 +10,27 @@ interface CommentCardProps {
   isStroke?: boolean;
   isFilled?: boolean;
   isCharacter?: boolean;
+  isChat?: boolean;
 }
 
-const CommentCard = ({ content, isStroke = false, isFilled = false, isCharacter = false }: CommentCardProps) => {
+const CommentCard = ({
+  content,
+  isStroke = false,
+  isFilled = false,
+  isCharacter = false,
+  isChat = false,
+}: CommentCardProps) => {
   return (
     <Stack alignItems="center" direction="row">
-      {isCharacter && (
-        <Box height={100} position="relative" width={100}>
+      {isChat && (
+        <Box height={75} position="relative" width={75}>
+          {isCharacter && (
+            <Image fill alt="Character Image" sizes="100%" src="/image/sanjinee.png" style={{ objectFit: 'cover' }} />
+          )}
+        </Box>
+      )}
+      {!isChat && isCharacter && (
+        <Box height={75} position="relative" width={75}>
           <Image fill alt="Character Image" sizes="100%" src="/image/sanjinee.png" style={{ objectFit: 'cover' }} />
         </Box>
       )}
