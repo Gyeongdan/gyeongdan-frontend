@@ -15,9 +15,9 @@ const articleData = {
   originalUrl: 'https://www.hankyung.com/article/2024071421597',
   uploadDate: '2024.07.14',
   viewCount: 1,
-  comment:'트럼프 전 대통령이 유세 중에 총격을 당했는데, 범인은 현장에서 사살되었어요. 이 사건으로 다른 사람들도 다치고, 이 사건은 암살미수로 규정되어 수사가 진행 중이에요.',
+  comment:
+    '트럼프 전 대통령이 유세 중에 총격을 당했는데, 범인은 현장에서 사살되었어요. 이 사건으로 다른 사람들도 다치고, 이 사건은 암살미수로 규정되어 수사가 진행 중이에요.',
   source: '한국경제',
-
 };
 
 export default articleData;
