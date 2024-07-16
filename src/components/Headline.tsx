@@ -10,7 +10,7 @@ interface HeadlineProps {
 const Headline = ({ title, uploadDate, viewCount, source }: HeadlineProps) => {
   return (
     <Box>
-      <Typography mb={1} variant="h1">
+      <Typography mb={3} variant="h1">
         {title}
       </Typography>
       <Stack alignItems="center" direction="row">

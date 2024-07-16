@@ -50,6 +50,7 @@ const CommentCard = ({
             background: isFilled
               ? `linear-gradient(${color.gradient_blue_dark}, ${color.gradient_blue_light})`
               : 'white',
+            display: isChat ? 'inline-block' : 'block',
           }}
         >
           <Typography color={isFilled ? 'white' : 'black'} variant="body2" whiteSpace="pre-line">
