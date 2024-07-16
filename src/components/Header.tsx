@@ -1,7 +1,9 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+
 import { Button, Link, Stack, Typography, Box } from '@mui/material';
+
 import { mainCategory } from '@/constants/category';
 import color from '@/constants/color';
 
@@ -26,7 +28,6 @@ const Header = () => {
     };
   }, [lastScrollY]);
 
-
   return (
     <>
       <Box
@@ -42,8 +43,8 @@ const Header = () => {
         <Stack
           alignItems="center"
           direction="row"
-          justifyContent="space-between"
           height="100px"
+          justifyContent="space-between"
           maxWidth="100%"
           p={3}
           px={6}
