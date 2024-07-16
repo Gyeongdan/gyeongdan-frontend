@@ -15,7 +15,7 @@ const NewsCardHorizontal = ({ date, title, description, imageUrl }: NewsCardHori
   return (
     <Stack alignItems="center" direction="row" height="180px">
       <Stack>
-        <Typography color={color.blue} fontWeight="bold" mb={1} variant="body2">
+        <Typography color={color.blue} fontWeight="600" mb={1} variant="body2">
           {date}
         </Typography>
         <Typography
