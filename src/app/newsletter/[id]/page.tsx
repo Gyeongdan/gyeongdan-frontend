@@ -1,12 +1,13 @@
 'use client';
 
 import Image from 'next/image';
-
-import { Box, Container } from '@mui/material';
-
+import { Box, Card, CardContent, Container, Typography } from '@mui/material';
 import Headline from '@/components/Headline';
 import color from '@/constants/color';
 import articleData from '@/mocks/article';
+import CommentCard from '@/components/CommentCard';
+import article from '@/mocks/article';
+import { padding } from '@mui/system';
 
 const Page = () => {
   return (
@@ -19,14 +20,36 @@ const Page = () => {
     >
       <Container maxWidth="md" sx={{ padding: '2rem', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
         <Box sx={{ width: '100%', maxWidth: '600px' }}>
-          <Headline
-            source={articleData.source}
-            title={articleData.title}
-            uploadDate={articleData.uploadDate}
-            viewCount={articleData.viewCount}
-          />
-          <Box sx={{ marginTop: '1rem', display: 'flex', justifyContent: 'center' }}>
-            <Image alt="hi" height={400} src={articleData.imageUrl} style={{ borderRadius: '8px' }} width={600} />
+          <Box sx={{ marginBottom: '2rem' }}>
+            <Headline
+              source={articleData.source}
+              title={articleData.title}
+              uploadDate={articleData.uploadDate}
+              viewCount={articleData.viewCount}
+            />
+          </Box>
+          <CommentCard content={articleData.comment} isCharacter={true} />
+          <Box sx={{ marginTop: '1rem', width: '100%' }}>
+            <Box sx={{ width: '100%', maxWidth: '600px', margin: '0 auto' }}>
+              <Image
+                alt="hi"
+                src={articleData.imageUrl}
+                width={600}
+                height={400}
+                style={{ borderRadius: '8px', width: '100%', objectFit: 'cover' }}
+              />
+            </Box>
+            <Card sx={{ marginTop: '2rem', backgroundColor: 'transparent', boxShadow: 'none', width: '100%' }}>
+              <CardContent sx={{ padding: 0 }}>
+                <Typography
+                  variant="body1"
+                  component="div"
+                  sx={{ color: color.gray_dark, whiteSpace: 'pre-line', width: '100%', maxWidth: '600px', margin: '0 auto' }}
+                >
+                  {article.content}
+                </Typography>
+              </CardContent>
+            </Card>
           </Box>
         </Box>
       </Container>
