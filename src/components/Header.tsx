@@ -40,15 +40,8 @@ const Header = () => {
           zIndex: 1000,
         }}
       >
-        <Stack
-          alignItems="center"
-          direction="row"
-          height="100px"
-          justifyContent="space-between"
-          maxWidth="100%"
-          px={15}
-        >
-          <Stack alignItems="center" direction="row" height="100px" justifyContent="space-between" maxWidth="100%">
+        <Stack alignItems="center" direction="row" height="100px" justifyContent="space-between" px={15}>
+          <Stack direction="row">
             <Typography variant="h1">경단</Typography>
             <Typography color={color.gray_dark} mt={2} variant="subtitle1">
               경제를 단순하게
@@ -73,7 +66,7 @@ const Header = () => {
             ))}
 
             <Link href="/login" underline="none">
-              <Button color="primary" sx={{ width: '100px' }} variant="outlined">
+              <Button color="primary" variant="outlined">
                 LOGIN
               </Button>
             </Link>
