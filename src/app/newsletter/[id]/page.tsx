@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import React from 'react';
 
-import { Box, Card, CardContent, Container, Tooltip, Typography } from '@mui/material';
+import { Box, Card, CardContent, Container, Stack, Tooltip, Typography } from '@mui/material';
 
 import CommentCard from '@/components/CommentCard';
 import StyledGradientBox from '@/components/GradientBox';
@@ -36,24 +36,8 @@ const Page = () => {
   };
 
   return (
-    <Box sx={{ position: 'relative', minHeight: '100vh' }}>
-      <StyledGradientBox
-        sx={{
-          position: 'absolute',
-          width: '100%',
-          height: '100%',
-          zIndex: -1,
-        }}
-      />
-      <Container
-        sx={{
-          padding: '5rem',
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          zIndex: 1,
-        }}
-      >
+    <StyledGradientBox>
+      <Stack alignItems="center" p={10}>
         <Box sx={{ maxWidth: '600px' }}>
           <Box sx={{ marginBottom: '2rem' }}>
             <Headline
@@ -91,8 +75,8 @@ const Page = () => {
             }
           />
         </Box>
-      </Container>
-    </Box>
+      </Stack>
+    </StyledGradientBox>
   );
 };
 
