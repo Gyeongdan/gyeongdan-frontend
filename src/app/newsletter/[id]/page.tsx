@@ -10,6 +10,7 @@ import StyledGradientBox from '@/components/GradientBox';
 import Headline from '@/components/Headline';
 import color from '@/constants/color';
 import articleData from '@/mocks/article';
+import TooltipText from '@/components/TooltipText';
 
 const Page = () => {
   const phrasesContent = articleData.phrases
@@ -69,13 +70,15 @@ const Page = () => {
             </Box>
             <Card sx={{ marginTop: '2rem', backgroundColor: 'transparent', boxShadow: 'none' }}>
               <CardContent sx={{ padding: 0 }}>
-                <Typography fontSize="16px" sx={{ color: color.gray_dark, whiteSpace: 'pre-line' }} variant="body2">
-                  {renderContentWithTooltips(articleData.content)}
+                <Typography color={color.gray_dark} fontSize="16px" my={4} variant="body2" whiteSpace="pre-line">
+                  <TooltipText content={articleData.content} phrasesContent={phrasesContent} />
                 </Typography>
               </CardContent>
             </Card>
           </Box>
-          <h3 style={{ color: color.blue }}>AI 산지니가 선별한 기사 속 경단어</h3>
+          <Typography color={color.blue} fontSize="20px" py={2} variant="h3">
+            AI 산지니가 선별한 기사 속 경단어
+          </Typography>
           <CommentCard isCharacter isChat content="헷갈릴만한 단어를 준비해봤어 😆" />
           <CommentCard
             isChat
