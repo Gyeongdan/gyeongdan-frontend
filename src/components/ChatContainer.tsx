@@ -10,14 +10,9 @@ import ChatMessage from './ChatMessage';
 const StyledChatContainer = styled(Box)`
   flex: 1;
   width: 100%;
-  max-width: 600px;
-  margin-bottom: 2rem;
+  max-width: 750px;
   overflow-y: auto;
   max-height: calc(100vh - 200px);
-  padding: 1rem;
-  border-radius: 10px;
-  background: #f9f9f9;
-  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
 `;
 
 interface ChatContainerProps {

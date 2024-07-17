@@ -1,7 +1,7 @@
+'use client';
+
 import Image from 'next/image';
-
-import { Box, Stack, Typography } from '@mui/material';
-
+import { Box, Stack, Typography, SxProps, Theme } from '@mui/material';
 import color from '@/constants/color';
 
 interface CommentCardProps {
@@ -9,11 +9,12 @@ interface CommentCardProps {
   isStroke?: boolean;
   isFilled?: boolean;
   isCharacter?: boolean;
+  sx?: SxProps<Theme>;
 }
 
-const CommentCard = ({ content, isStroke = false, isFilled = false, isCharacter = false }: CommentCardProps) => {
+const CommentCard = ({ content, isStroke = false, isFilled = false, isCharacter = false, sx }: CommentCardProps) => {
   return (
-    <Stack alignItems="center" direction="row">
+    <Stack alignItems="center" direction="row" sx={sx}>
       {isCharacter && (
         <Box height={100} position="relative" width={100}>
           <Image fill alt="Character Image" sizes="100%" src="/image/sanjinee.png" style={{ objectFit: 'cover' }} />
@@ -26,7 +27,6 @@ const CommentCard = ({ content, isStroke = false, isFilled = false, isCharacter 
         sx={{
           background: isStroke ? `linear-gradient(${color.gradient_blue_dark}, ${color.gradient_blue_light})` : 'none',
         }}
-        width="100%"
       >
         <Box
           borderRadius="1.1rem"

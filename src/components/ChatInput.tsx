@@ -1,8 +1,8 @@
 'use client';
 
 import React, { useState } from 'react';
-
 import { Box, TextField, Button } from '@mui/material';
+import color from '@/constants/color';
 
 interface ChatInputProps {
   onSendMessage: (message: string) => void;
@@ -28,13 +28,13 @@ const ChatInput = ({ onSendMessage }: ChatInputProps) => {
   };
 
   return (
-    <Box sx={{ display: 'flex', width: '100%', maxWidth: '600px' }}>
+    <Box sx={{ display: 'flex', width: '100%', maxWidth: '600px', backgroundColor: color.transport_white, borderRadius: '5px', padding: '8px', boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.1)' }}>
       <TextField
         fullWidth
         placeholder="Type your message..."
         sx={{
           marginRight: '1rem',
-          backgroundColor: 'white',
+          backgroundColor: 'rgba(255, 255, 255, 0.8)', // Slightly more opaque for text visibility
           borderRadius: '5px',
           boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.1)',
         }}
@@ -46,17 +46,17 @@ const ChatInput = ({ onSendMessage }: ChatInputProps) => {
       <Button
         color="primary"
         sx={{
-          backgroundColor: '#ff69b4',
+          background: `linear-gradient(45deg, ${color.gradient_blue_dark}, ${color.gradient_blue_light})`,
           color: 'white',
           borderRadius: '5px',
           '&:hover': {
-            backgroundColor: '#ff1493',
+            background: `linear-gradient(45deg, ${color.gradient_blue_light}, ${color.gradient_blue_dark})`,
           },
         }}
         variant="contained"
         onClick={handleSendMessage}
       >
-        Send
+        전송
       </Button>
     </Box>
   );

@@ -37,7 +37,7 @@ const ChatMessage = ({ content, isUser, delay }: ChatMessageProps) => {
       delay={delay}
       sx={{ display: 'flex', justifyContent: isUser ? 'flex-end' : 'flex-start', marginY: '0.5rem' }}
     >
-      <CommentCard isStroke content={content} isCharacter={!isUser} />
+      <CommentCard isStroke content={content} isCharacter={!isUser} isFilled={isUser}/>
     </AnimatedBox>
   );
 };
