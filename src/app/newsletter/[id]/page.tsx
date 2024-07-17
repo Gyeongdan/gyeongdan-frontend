@@ -47,7 +47,7 @@ const Page = () => {
               viewCount={articleData.viewCount}
             />
           </Box>
-          <CommentCard isCharacter isStroke content={articleData.comment} isChat={false} />
+          <CommentCard isCharacter isStroke content={articleData.comment} />
           <Box mt="2.5rem">
             <Box>
               <Image alt="hi" height={400} src={articleData.imageUrl} style={{ objectFit: 'cover' }} width={600} />
