@@ -47,7 +47,7 @@ const CommentCard = ({
       }}
     >
       {isCharacter && (
-        <CardMedia image="/image/sanjinee.png" sx={{ width: 75, height: 75, minWidth: 75, objectFit: 'contain' }} />
+        <CardMedia image="/images/sanjinee.png" sx={{ width: 75, height: 75, minWidth: 75, objectFit: 'contain' }} />
       )}
       {isChat && !isCharacter && <CardMedia sx={{ width: 75, height: 75, minWidth: 75 }} />}
       <Box
