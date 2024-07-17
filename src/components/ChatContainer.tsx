@@ -15,8 +15,15 @@ const StyledChatContainer = styled(Box)`
   max-height: calc(100vh - 200px);
 `;
 
+interface Message {
+  id: string; // Ensure each message has a unique identifier
+  content?: string;
+  isUser?: boolean;
+  buttons?: Array<{ text: string; onClick: () => void }>;
+}
+
 interface ChatContainerProps {
-  messages: Array<{ content: string; isUser: boolean }>;
+  messages: Message[];
 }
 
 const ChatContainer = ({ messages }: ChatContainerProps) => {
@@ -28,8 +35,14 @@ const ChatContainer = ({ messages }: ChatContainerProps) => {
 
   return (
     <StyledChatContainer>
-      {messages.map((message, index) => (
-        <ChatMessage key={index} content={message.content} delay={index * 0.1} isUser={message.isUser} />
+      {messages.map((message) => (
+        <ChatMessage
+          key={message.id} // Use the unique identifier here
+          buttons={message.buttons} // 전달된 buttons 속성을 추가
+          content={message.content}
+          delay={message.id} // Ensure the delay is set properly if it relies on index
+          isUser={message.isUser}
+        />
       ))}
       <div ref={messagesEndRef} />
     </StyledChatContainer>

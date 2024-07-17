@@ -1,44 +1,39 @@
-'use client';
-
 import React from 'react';
 
-import { css, keyframes } from '@emotion/react';
-import styled from '@emotion/styled';
-import { Box } from '@mui/material';
+import { Box, Button } from '@mui/material';
 
 import CommentCard from '@/components/CommentCard';
 
-const fadeInUp = keyframes`
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-`;
-
-const AnimatedBox = styled(Box)<{ delay: number }>`
-  animation: ${fadeInUp} 0.6s ease-out;
-  animation-delay: ${(props) => props.delay}s;
-  animation-fill-mode: both;
-`;
-
-interface ChatMessageProps {
-  content: string;
-  isUser: boolean;
-  delay: number;
+interface ButtonProps {
+  id: string;
+  text: string;
+  onClick: () => void;
 }
 
-const ChatMessage = ({ content, isUser, delay }: ChatMessageProps) => {
+interface ChatMessageProps {
+  content?: string;
+  isUser?: boolean;
+  delay: number;
+  buttons?: ButtonProps[];
+}
+
+const ChatMessage = ({ content, isUser, delay, buttons }: ChatMessageProps) => {
   return (
-    <AnimatedBox
-      delay={delay}
+    <Box
+      style={{ animationDelay: `${delay}s`, animationName: 'fadeIn', animationDuration: '0.5s' }}
       sx={{ display: 'flex', justifyContent: isUser ? 'flex-end' : 'flex-start', marginY: '0.5rem' }}
     >
-      <CommentCard isStroke content={content} isCharacter={!isUser} isFilled={isUser}/>
-    </AnimatedBox>
+      {content && <CommentCard isChat isStroke content={content} isCharacter={!isUser} isFilled={isUser} />}
+      {buttons && (
+        <Box sx={{ display: 'flex', flexDirection: 'row', gap: 1 }}>
+          {buttons.map((button) => (
+            <Button key={button.id} color="primary" variant="contained" onClick={button.onClick}>
+              {button.text}
+            </Button>
+          ))}
+        </Box>
+      )}
+    </Box>
   );
 };
 
