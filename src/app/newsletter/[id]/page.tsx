@@ -3,9 +3,8 @@
 import Image from 'next/image';
 import React from 'react';
 
-import { Box, Card, CardContent, Container, Typography } from '@mui/material';
+import { Box, Card, CardContent, Container, Tooltip, Typography } from '@mui/material';
 
-import ColorTooltip from '@/components/ColorTooltip';
 import CommentCard from '@/components/CommentCard';
 import CommentList from '@/components/CommentList';
 import StyledGradientBox from '@/components/GradientBox';
@@ -37,9 +36,9 @@ const Page = () => {
       count += 1;
       if (phrase) {
         return (
-          <ColorTooltip key={`${cleanWord}-${count}`} arrow title={phrase.definition}>
+          <Tooltip key={`${cleanWord}-${count}`} arrow title={phrase.definition}>
             <span style={{ textDecoration: 'underline', cursor: 'pointer' }}>{word}</span>
-          </ColorTooltip>
+          </Tooltip>
         );
       }
       return <span key={`${cleanWord}-${count}`}>{word}</span>;
