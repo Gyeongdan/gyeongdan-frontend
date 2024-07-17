@@ -1,7 +1,8 @@
-import Image from 'next/image';
-import React from 'react';
+'use client';
 
-import { Box, Stack, Typography } from '@mui/material';
+import { useInView } from 'react-intersection-observer';
+
+import { Box, Card, CardMedia, Typography } from '@mui/material';
 
 import color from '@/constants/color';
 
@@ -20,49 +21,52 @@ const CommentCard = ({
   isCharacter = false,
   isChat = false,
 }: CommentCardProps) => {
+  const { ref, inView } = useInView({
+    threshold: 0.1,
+  });
+
   return (
-    <Stack alignItems="center" direction="row">
-      {isChat && (
-        <Box flexShrink={0} height={75} position="relative" width={75}>
-          {isCharacter && (
-            <Image fill alt="Character Image" sizes="100%" src="/image/sanjinee.png" style={{ objectFit: 'cover' }} />
-          )}
-        </Box>
+    <Card
+      ref={ref}
+      sx={{
+        display: 'flex',
+        boxShadow: 'none',
+        alignItems: 'center',
+        bgcolor: 'transparent',
+        ...(isChat && {
+          opacity: inView ? 1 : 0,
+          transform: inView ? 'translateY(0)' : 'translateY(20px)',
+          transition: 'opacity 0.6s ease-out, transform 0.6s ease-out',
+        }),
+        ...(!isCharacter && {
+          mb: 1.3,
+        }),
+      }}
+    >
+      {isCharacter && (
+        <CardMedia image="/image/sanjinee.png" sx={{ width: 75, height: 75, minWidth: 75, objectFit: 'contain' }} />
       )}
-      {!isChat && isCharacter && (
-        <Box flexShrink={0} height={75} position="relative" width={75}>
-          <Image fill alt="Character Image" sizes="100%" src="/image/sanjinee.png" style={{ objectFit: 'cover' }} />
-        </Box>
-      )}
+      {isChat && !isCharacter && <CardMedia sx={{ width: 75, height: 75, minWidth: 75 }} />}
       <Box
-        borderRadius={5}
-        ml={1}
-        padding="2px"
         sx={{
+          borderRadius: 5,
+          ml: 1,
+          padding: '2px',
           background: isStroke ? `linear-gradient(${color.gradient_blue_dark}, ${color.gradient_blue_light})` : 'none',
-          display: 'flex',
-          alignItems: 'center',
-          maxWidth: '100%',
-          overflow: 'hidden',
         }}
       >
         <Box
-          borderRadius="1.1rem"
+          borderRadius="18px"
           padding={2}
           sx={{
             background: isFilled
               ? `linear-gradient(${color.gradient_blue_dark}, ${color.gradient_blue_light})`
               : 'white',
-            display: 'flex',
-            alignItems: 'center',
-            maxWidth: '100%',
-            overflow: 'hidden',
           }}
         >
           <Typography
             color={isFilled ? 'white' : 'black'}
             fontFamily="GmarketSansMedium"
-            sx={{ wordBreak: 'break-word' }}
             variant="body2"
             whiteSpace="pre-line"
           >
@@ -70,7 +74,7 @@ const CommentCard = ({
           </Typography>
         </Box>
       </Box>
-    </Stack>
+    </Card>
   );
 };
 
