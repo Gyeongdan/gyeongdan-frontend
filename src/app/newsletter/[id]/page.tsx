@@ -17,24 +17,6 @@ const Page = () => {
     ? Object.entries(articleData.phrases).map(([term, definition]) => ({ term, definition }))
     : [];
 
-  const renderContentWithTooltips = (content: string) => {
-    let count = 0;
-    const words = content.split(/(\s+)/);
-    return words.map((word) => {
-      const cleanWord = word.replace(/[.,/#!$%^&*;:{}=\-_`~()]/g, '').trim();
-      const phrase = phrasesContent.find(({ term }) => cleanWord.includes(term));
-      count += 1;
-      if (phrase) {
-        return (
-          <Tooltip key={`${cleanWord}-${count}`} arrow title={phrase.definition}>
-            <span style={{ textDecoration: 'underline', cursor: 'pointer' }}>{word}</span>
-          </Tooltip>
-        );
-      }
-      return <span key={`${cleanWord}-${count}`}>{word}</span>;
-    });
-  };
-
   return (
     <StyledGradientBox>
       <Stack alignItems="center" p={10}>
