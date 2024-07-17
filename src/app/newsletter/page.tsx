@@ -13,16 +13,24 @@ import color from '@/constants/color';
 import suggestionData from '@/mocks/suggestion';
 import { Article } from '@/types';
 
-import { getArticleAll } from '../api/newsletter';
+import { getArticleAll, getPopularArticle } from '../api/newsletter';
 
 const Page = () => {
   const [selectedTab, setSelectedTab] = useState(articleCategory[0]);
   const [articles, setArticles] = useState<Article[]>([]);
+  const [popularArticles, setPopularArticles] = useState<Article[]>([]);
 
   useEffect(() => {
     getArticleAll().then((res) => {
       if (res.status) {
         setArticles(res.data);
+      } else {
+        throw res.message;
+      }
+    });
+    getPopularArticle().then((res) => {
+      if (res.status) {
+        setPopularArticles(res.data);
       } else {
         throw res.message;
       }
@@ -70,7 +78,7 @@ const Page = () => {
           <Stack mt={6} pl={6} spacing={6} width="100%">
             <Suggestions content={suggestionData} title="지민님에게 추천드려요!" />
             <Suggestions content={suggestionData} title="지민님과 비슷한 유형이 관심있어요!" />
-            <Suggestions content={suggestionData} title="지금 인기있는 기사" />
+            <Suggestions content={popularArticles} title="지금 인기있는 기사" />
           </Stack>
         </Stack>
       </Stack>
