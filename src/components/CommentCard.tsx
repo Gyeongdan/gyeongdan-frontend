@@ -38,6 +38,9 @@ const CommentCard = ({
           transform: inView ? 'translateY(0)' : 'translateY(20px)',
           transition: 'opacity 0.6s ease-out, transform 0.6s ease-out',
         }),
+        ...(!isChat && {
+          width: '100%',
+        }),
         ...(!isCharacter && {
           mb: 1.3,
         }),
@@ -53,6 +56,9 @@ const CommentCard = ({
           ml: 1,
           padding: '2px',
           background: isStroke ? `linear-gradient(${color.gradient_blue_dark}, ${color.gradient_blue_light})` : 'none',
+          ...(!isChat && {
+            width: '100%',
+          }),
         }}
       >
         <Box
