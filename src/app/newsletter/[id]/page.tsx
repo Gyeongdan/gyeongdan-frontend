@@ -1,9 +1,8 @@
 'use client';
 
 import Image from 'next/image';
-import React from 'react';
 
-import { Box, Card, CardContent, Container, Stack, Tooltip, Typography } from '@mui/material';
+import { Box, Card, CardContent, Stack, Typography } from '@mui/material';
 
 import CommentCard from '@/components/CommentCard';
 import StyledGradientBox from '@/components/GradientBox';
@@ -32,7 +31,7 @@ const Page = () => {
           <CommentCard isCharacter isStroke content={articleData.comment} />
           <Box mt="2.5rem">
             <Box>
-              <Image alt="hi" height={400} src={articleData.imageUrl} style={{ objectFit: 'cover' }} width={600} />
+              <Image alt="articleImage" height={400} src={articleData.imageUrl} style={{ objectFit: 'cover' }} width={600} />
             </Box>
             <Card sx={{ marginTop: '2rem', backgroundColor: 'transparent', boxShadow: 'none' }}>
               <CardContent sx={{ padding: 0 }}>
