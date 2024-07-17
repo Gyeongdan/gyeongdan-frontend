@@ -8,10 +8,10 @@ export const mainCategory = [
 ];
 
 export const articleCategory = [
-  { value: 'all', label: '전체' },
-  { value: 'economy', label: '경제' },
-  { value: 'politics', label: '정치' },
-  { value: 'society', label: '사회' },
-  { value: 'culture', label: '문화' },
-  { value: 'science', label: '과학기술' },
+  { value: 'ALL', label: '전체' },
+  { value: 'ECONOMY_AND_BUSINESS', label: '경제' },
+  { value: 'POLITICS_AND_SOCIETY', label: '정치' },
+  { value: 'TECHNOLOGY_AND_CULTURE', label: '문화' },
+  { value: 'SPORTS_AND_LEISURE', label: '스포츠' },
+  { value: 'OPINION_AND_ANALYSIS', label: '분석' },
 ];
