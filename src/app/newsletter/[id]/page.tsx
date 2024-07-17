@@ -7,9 +7,9 @@ import { Box, Card, CardContent, Stack, Typography } from '@mui/material';
 import CommentCard from '@/components/CommentCard';
 import StyledGradientBox from '@/components/GradientBox';
 import Headline from '@/components/Headline';
+import TooltipText from '@/components/TooltipText';
 import color from '@/constants/color';
 import articleData from '@/mocks/article';
-import TooltipText from '@/components/TooltipText';
 
 const Page = () => {
   const phrasesContent = articleData.phrases
@@ -31,7 +31,13 @@ const Page = () => {
           <CommentCard isCharacter isStroke content={articleData.comment} />
           <Box mt="2.5rem">
             <Box>
-              <Image alt="articleImage" height={400} src={articleData.imageUrl} style={{ objectFit: 'cover' }} width={600} />
+              <Image
+                alt="articleImage"
+                height={400}
+                src={articleData.imageUrl}
+                style={{ objectFit: 'cover' }}
+                width={600}
+              />
             </Box>
             <Card sx={{ marginTop: '2rem', backgroundColor: 'transparent', boxShadow: 'none' }}>
               <CardContent sx={{ padding: 0 }}>
