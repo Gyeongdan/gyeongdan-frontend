@@ -49,7 +49,7 @@ const Page = () => {
               <ChartRenderer data={insightData.chart.data} height={320} layout={insightData.chart.layout} width={480} />
               <CommentCard
                 isFilled
-                content="나만의 인사이트 만들어보기"
+                content="나만의 인사이트 만들어보기(공사중 🚧)"
                 sx={{ width: '480px', marginTop: '1rem', textAlign: 'center' }}
               />
             </Box>
