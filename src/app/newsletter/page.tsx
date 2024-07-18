@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { Box, Divider, Stack } from '@mui/material';
 
@@ -10,11 +10,32 @@ import NewsCardHorizontal from '@/components/NewsCardHorizontal';
 import Suggestions from '@/components/Suggestion';
 import { articleCategory } from '@/constants/category';
 import color from '@/constants/color';
-import newsData from '@/mocks/news';
 import suggestionData from '@/mocks/suggestion';
+import { Article } from '@/types';
+
+import { getArticleAll, getPopularArticle } from '../api/newsletter';
 
 const Page = () => {
   const [selectedTab, setSelectedTab] = useState(articleCategory[0]);
+  const [articles, setArticles] = useState<Article[]>([]);
+  const [popularArticles, setPopularArticles] = useState<Article[]>([]);
+
+  useEffect(() => {
+    getArticleAll().then((res) => {
+      if (res.status) {
+        setArticles(res.data);
+      } else {
+        throw res.message;
+      }
+    });
+    getPopularArticle().then((res) => {
+      if (res.status) {
+        setPopularArticles(res.data);
+      } else {
+        throw res.message;
+      }
+    });
+  }, []);
 
   return (
     <Box>
@@ -25,24 +46,26 @@ const Page = () => {
             {articleCategory.map((tab) => (
               <Box key={tab.value} hidden={tab.value !== selectedTab.value}>
                 {tab.value === selectedTab.value &&
-                  (selectedTab.value === 'all'
-                    ? newsData.map((item) => (
+                  (selectedTab.value === 'ALL'
+                    ? articles.map((item) => (
                         <NewsCardHorizontal
-                          key={item.title}
-                          date={item.date}
-                          description={item.description}
+                          key={item.id}
+                          content={item.content}
+                          id={item.id}
                           imageUrl={item.imageUrl}
+                          publishedAt={item.publishedAt.split('T')[0]}
                           title={item.title}
                         />
                       ))
-                    : newsData
-                        .filter((item) => item.value === tab.value)
+                    : articles
+                        .filter((item) => item.category === tab.value)
                         .map((filteredItem) => (
                           <NewsCardHorizontal
-                            key={filteredItem.title}
-                            date={filteredItem.date}
-                            description={filteredItem.description}
+                            key={filteredItem.id}
+                            content={filteredItem.content}
+                            id={filteredItem.id}
                             imageUrl={filteredItem.imageUrl}
+                            publishedAt={filteredItem.publishedAt.split('T')[0]}
                             title={filteredItem.title}
                           />
                         )))}
@@ -55,7 +78,7 @@ const Page = () => {
           <Stack mt={6} pl={6} spacing={6} width="100%">
             <Suggestions content={suggestionData} title="지민님에게 추천드려요!" />
             <Suggestions content={suggestionData} title="지민님과 비슷한 유형이 관심있어요!" />
-            <Suggestions content={suggestionData} title="지금 인기있는 기사" />
+            <Suggestions content={popularArticles} title="지금 인기있는 기사" />
           </Stack>
         </Stack>
       </Stack>

@@ -1,4 +1,4 @@
-import { Stack, Typography } from '@mui/material';
+import { Link, Stack, Typography } from '@mui/material';
 
 import color from '@/constants/color';
 
@@ -19,16 +19,19 @@ const Suggestions = ({ title, content }: SuggestionProps) => {
         {title}
       </Typography>
       {content.map((item) => (
-        <Typography
+        <Link
           key={item.id}
+          color="inherit"
           fontSize="12px"
+          href={`/newsletter/${item.id}`}
           overflow="hidden"
           textOverflow="ellipsis"
+          underline="none"
           variant="body2"
           whiteSpace="nowrap"
         >
           {item.title}
-        </Typography>
+        </Link>
       ))}
     </Stack>
   );
