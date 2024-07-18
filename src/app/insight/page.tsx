@@ -1,3 +1,4 @@
+/* eslint-disable import/order */
 'use client';
 
 import dynamic from 'next/dynamic';
