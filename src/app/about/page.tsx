@@ -6,8 +6,8 @@ import React from 'react';
 
 import FullpageComponent from '@/components/FullpageComponent';
 
-const AboutPage: React.FC = () => {
+const Page = () => {
   return <FullpageComponent />;
 };
 
-export default AboutPage;
+export default Page;

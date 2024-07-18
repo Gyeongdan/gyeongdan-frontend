@@ -1,54 +1,20 @@
-// src/components/FullpageComponent.tsx
 import React from 'react';
 
 import ReactFullpage from '@fullpage/react-fullpage';
-import { Box, Typography } from '@mui/material';
+import AboutPageComponent from '@/components/AboutPageComponent';
+import MainPage from '@/app/about/mainpage';
 
 const FullpageComponent: React.FC = () => (
   <ReactFullpage
-    credits={{ enabled: false }}
+    credits={{ enabled: true }}
     render={() => {
       return (
         <div id="fullpage-wrapper" style={{ height: '100vh' }}>
-          <Box
-            className="section"
-            id="section1"
-            sx={{
-              height: '100vh',
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-              backgroundColor: '#f5f5f5',
-            }}
-          >
-            <Typography variant="h3">Section 1</Typography>
-          </Box>
-          <Box
-            className="section"
-            id="section2"
-            sx={{
-              height: '100vh',
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-              backgroundColor: '#e0e0e0',
-            }}
-          >
-            <Typography variant="h3">Section 2</Typography>
-          </Box>
-          <Box
-            className="section"
-            id="section3"
-            sx={{
-              height: '100vh',
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-              backgroundColor: '#bdbdbd',
-            }}
-          >
-            <Typography variant="h3">Section 3</Typography>
-          </Box>
+          <MainPage />
+          <AboutPageComponent title="1번쨰" style={{backgroundColor: 'linear-gradient(to bottom, rgba(29, 112, 241, 0), rgba(26, 197, 251, 1))',}} description="This is the about page" />
+          <AboutPageComponent title="" description="This is the about page" />
+          <AboutPageComponent title="기능 2개 설명" description="This is the about page" />
+          <AboutPageComponent title="우리가 주고 싶은 관점" description="This is the about page" />
         </div>
       );
     }}
