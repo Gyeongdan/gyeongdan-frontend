@@ -1,16 +1,19 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { Box, Button, FormControlLabel, Radio, RadioGroup, Stack } from '@mui/material';
 
 import CommentCard from '@/components/CommentCard';
 import GradientBox from '@/components/GradientBox';
 import color from '@/constants/color';
-import testData from '@/mocks/test';
+import { Question } from '@/types';
+
+import { getQuestions } from '../api/test';
 
 const Page = () => {
-  const [selectedValue, setSelectedValue] = useState<number[]>(Array(testData.length).fill(0));
+  const [questions, setQuestions] = useState<Question[]>([]);
+  const [selectedValue, setSelectedValue] = useState<number[]>([]);
 
   const isNotSelected = selectedValue.includes(0);
 
@@ -24,6 +27,15 @@ const Page = () => {
     // TODO: post api 연결
   };
 
+  useEffect(() => {
+    getQuestions().then((res) => {
+      if (res.result) {
+        setQuestions(res.data);
+        setSelectedValue(Array(res.data.length).fill(0));
+      }
+    });
+  }, []);
+
   return (
     <GradientBox sx={{ py: 5, px: 15 }}>
       <Box width="600px">
@@ -33,20 +45,20 @@ const Page = () => {
         />
       </Box>
       <Stack alignItems="center" my={10} spacing={10}>
-        {testData.map((item) => (
+        {questions.map((item) => (
           <Stack key={item.title} alignItems="center" width="600px">
-            <Box mb={2} textAlign="center" width="550px">
+            <Box mb={2} textAlign="center" width="580px">
               <CommentCard isStroke content={item.title} sx={{ fontSize: 20, p: 0.5 }} />
             </Box>
             <RadioGroup
               row
-              sx={{ bgcolor: 'white', borderRadius: 5, p: 2, px: 20, width: '900px', justifyContent: 'space-between' }}
-              value={selectedValue[testData.indexOf(item)]}
-              onChange={(e) => handleChange(testData.indexOf(item), Number(e.target.value))}
+              sx={{ bgcolor: 'white', borderRadius: 5, p: 2, px: 12, width: '900px', justifyContent: 'space-between' }}
+              value={selectedValue[questions.indexOf(item)]}
+              onChange={(e) => handleChange(questions.indexOf(item), Number(e.target.value))}
             >
-              <FormControlLabel control={<Radio />} label={item.option1.option} value="1" />
-              <FormControlLabel control={<Radio />} label={item.option2.option} value="2" />
-              <FormControlLabel control={<Radio />} label={item.option3.option} value="3" />
+              <FormControlLabel control={<Radio />} label={item.option1.option} sx={{ width: 220 }} value="1" />
+              <FormControlLabel control={<Radio />} label={item.option2.option} sx={{ width: 220 }} value="2" />
+              <FormControlLabel control={<Radio />} label={item.option3.option} sx={{ width: 220 }} value="3" />
             </RadioGroup>
           </Stack>
         ))}
