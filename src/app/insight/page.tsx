@@ -1,9 +1,9 @@
 /* eslint-disable import/order */
 'use client';
 
-import dynamic from 'next/dynamic';
-import React from 'react';
 
+import React from 'react';
+import dynamic from 'next/dynamic';
 import { Box, Stack, Typography, Grid } from '@mui/material';
 
 import CommentCard from '@/components/CommentCard';
@@ -12,6 +12,7 @@ import NewsCardVertical from '@/components/NewsCardVertical';
 import color from '@/constants/color';
 import insightData from '@/mocks/insight';
 import insightsDataList from '@/mocks/insights';
+
 
 // ChartRenderer를 동적으로 로드
 const ChartRenderer = dynamic(() => import('@/components/ChartRenderer'), { ssr: false });
