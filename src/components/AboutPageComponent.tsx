@@ -4,7 +4,7 @@ import { Box, SxProps } from '@mui/material';
 
 interface AboutPageComponentProps {
   title?: string;
-  description: string;
+  description?: string;
   sx?: SxProps;
   style?: React.CSSProperties;
   children?: ReactNode;
@@ -27,7 +27,7 @@ const AboutPageComponent = ({ title, description, sx, style, children }: AboutPa
     >
       <div>
         {title && <h1>{title}</h1>}
-        <p>{description}</p>
+        {description}
         {children}
       </div>
     </Box>

@@ -18,16 +18,13 @@ const float = keyframes`
 const MainPage = () => {
   return (
     <AboutPageComponent
-      description="hihi"
       style={{
         background: 'linear-gradient(to bottom, rgba(29, 112, 241, 0), rgba(26, 197, 251, 1))',
         alignItems: 'center',
-        paddingBottom: '200px', // paddingBottom으로 수정
+        paddingBottom: '200px',
       }}
     >
       <Typography sx={{ fontSize: 60, marginTop: '0px' }} variant="h1">
-        {' '}
-        {/* marginTop 수정 */}
         경제를 단순하게
       </Typography>
       <Typography sx={{ marginTop: '10px' }} variant="h6">
