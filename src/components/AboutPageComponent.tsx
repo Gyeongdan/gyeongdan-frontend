@@ -10,19 +10,19 @@ interface AboutPageComponentProps {
   children?: ReactNode;
 }
 
-const AboutPageComponent = ({ title, description, sx, style, children }: AboutPageComponentProps) => {
-  return (
-    <Box
-      className="section"
-      sx={{
-        height: '100vh',
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'center',
-        alignItems: 'center',
-        textAlign: 'center',
-        ...sx,
-        ...style,
+  const AboutPageComponent = ({ title, description, sx, style, children }: AboutPageComponentProps) => {
+    return (
+      <Box
+        className="section"
+        sx={{
+          height: '100vh',
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          alignItems: 'center',
+          textAlign: 'center',
+          ...sx,
+          ...style,
       }}
     >
       <div>
