@@ -1,9 +1,11 @@
 'use client';
 
 import React from 'react';
-import Plot from 'react-plotly.js';
-
+import dynamic from 'next/dynamic';
 import { Data, Layout } from 'plotly.js';
+
+// Dynamically import Plotly component to avoid SSR issues
+const Plot = dynamic(() => import('react-plotly.js'), { ssr: false });
 
 interface PlotDataProps {
   data: Data[];
