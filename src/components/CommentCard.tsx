@@ -1,18 +1,20 @@
 'use client';
 
+import { ReactNode } from 'react';
 import { useInView } from 'react-intersection-observer';
 
 import { Box, Card, CardMedia, SxProps, Typography } from '@mui/material';
+import { Theme } from '@mui/system';
 
 import color from '@/constants/color';
 
 interface CommentCardProps {
-  content: string;
+  content: ReactNode;
   isStroke?: boolean;
   isFilled?: boolean;
   isCharacter?: boolean;
   isChat?: boolean;
-  sx?: SxProps;
+  sx?: SxProps<Theme>;
 }
 
 const CommentCard = ({
@@ -46,6 +48,7 @@ const CommentCard = ({
         ...(!isCharacter && {
           mb: 1.3,
         }),
+        ...sx,
       }}
     >
       {isCharacter && (
@@ -70,13 +73,11 @@ const CommentCard = ({
             background: isFilled
               ? `linear-gradient(${color.gradient_blue_dark}, ${color.gradient_blue_light})`
               : 'white',
-            ...sx,
           }}
         >
           <Typography
             color={isFilled ? 'white' : 'black'}
             fontFamily="GmarketSansMedium"
-            sx={sx}
             variant="body2"
             whiteSpace="pre-line"
           >

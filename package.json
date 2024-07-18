@@ -12,18 +12,22 @@
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.5",
     "@mui/material": "^5.15.20",
+    "@mui/system": "^5.16.4",
     "axios": "^1.7.2",
     "jotai": "^2.9.0",
     "next": "14.2.4",
+    "plotly.js": "^2.33.0",
     "react": "^18",
     "react-dom": "^18",
-    "react-intersection-observer": "^9.13.0"
+    "react-intersection-observer": "^9.13.0",
+    "react-plotly.js": "^2.6.0"
   },
   "devDependencies": {
     "@swc-jotai/react-refresh": "^0.1.1",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "@types/react-plotly.js": "^2.6.3",
     "@typescript-eslint/eslint-plugin": "^7.16.0",
     "@typescript-eslint/parser": "^7.16.0",
     "eslint": "^8.56.0",
