@@ -4,12 +4,12 @@ import React, { useState, useEffect } from 'react';
 
 import { Container, Box, Typography, Card } from '@mui/material';
 
+import ChatContainer from '@/components/ChatbotContainer';
 import ChatInput from '@/components/ChatInput';
 import CommentCard from '@/components/CommentCard';
 import GradientBox from '@/components/GradientBox';
 import color from '@/constants/color';
 import chatbotIntro from '@/mocks/chatIntro';
-import ChatContainer from '@/components/ChatbotContainer';
 
 const initialMessage =
   '안녕 나는 AI 산지니야🤖\n최근 네가 읽었던 글에 대한 질문이나, 경제 단어에 대해서 더 알려줄게😆\n경단에 대해서 더 알려주는 것도 가능가능!!';

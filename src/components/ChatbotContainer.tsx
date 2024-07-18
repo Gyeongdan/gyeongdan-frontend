@@ -16,7 +16,7 @@ const StyledChatContainer = styled(Box)`
 `;
 
 interface Message {
-  id: string; // Ensure each message has a unique identifier
+  id: string;
   content?: string;
   isUser?: boolean;
   buttons?: Array<{ text: string; onClick: () => void }>;
@@ -37,10 +37,10 @@ const ChatContainer = ({ messages }: ChatContainerProps) => {
     <StyledChatContainer>
       {messages.map((message) => (
         <ChatMessage
-          key={message.id} // Use the unique identifier here
-          buttons={message.buttons} // 전달된 buttons 속성을 추가
+          key={message.id}
+          buttons={message.buttons}
           content={message.content}
-          delay={message.id} // Ensure the delay is set properly if it relies on index
+          delay={message.id}
           isUser={message.isUser}
         />
       ))}

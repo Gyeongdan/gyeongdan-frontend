@@ -21,20 +21,20 @@ const ChatMessage = ({ content, isUser, delay, buttons }: ChatMessageProps) => {
   return (
     <Box
       style={{ animationDelay: `${delay}s`, animationName: 'fadeIn', animationDuration: '0.5s' }}
-  sx={{ display: 'flex', justifyContent: isUser ? 'flex-end' : 'flex-start', marginY: '0.5rem' }}
->
-  {content && <CommentCard isChat isStroke content={content} isCharacter={!isUser} isFilled={isUser} />}
-    {buttons && (
-      <Box sx={{ display: 'flex', flexDirection: 'row', gap: 1 }}>
-      {buttons.map((button) => (
-        <Button key={button.id} color="primary" variant="contained" onClick={button.onClick}>
-        {button.text}
-        </Button>
-      ))}
-      </Box>
-    )}
+      sx={{ display: 'flex', justifyContent: isUser ? 'flex-end' : 'flex-start', marginY: '0.5rem' }}
+    >
+      {content && <CommentCard isChat isStroke content={content} isCharacter={!isUser} isFilled={isUser} />}
+      {buttons && (
+        <Box sx={{ display: 'flex', flexDirection: 'row', gap: 1 }}>
+          {buttons.map((button) => (
+            <Button key={button.id} color="primary" variant="contained" onClick={button.onClick}>
+              {button.text}
+            </Button>
+          ))}
+        </Box>
+      )}
     </Box>
   );
-  };
+};
 
-  export default ChatMessage;
+export default ChatMessage;
