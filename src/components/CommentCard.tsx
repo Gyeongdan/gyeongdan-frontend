@@ -12,7 +12,7 @@ interface CommentCardProps {
   isFilled?: boolean;
   isCharacter?: boolean;
   isChat?: boolean;
-  sx: SxProps;
+  sx?: SxProps;
 }
 
 const CommentCard = ({
