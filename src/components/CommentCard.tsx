@@ -1,17 +1,20 @@
 'use client';
 
+import { ReactNode } from 'react';
 import { useInView } from 'react-intersection-observer';
 
-import { Box, Card, CardMedia, Typography } from '@mui/material';
+import { Box, Card, CardMedia, SxProps, Typography } from '@mui/material';
+import { Theme } from '@mui/system';
 
 import color from '@/constants/color';
 
 interface CommentCardProps {
-  content: string;
+  content: ReactNode;
   isStroke?: boolean;
   isFilled?: boolean;
   isCharacter?: boolean;
   isChat?: boolean;
+  sx?: SxProps<Theme>;
 }
 
 const CommentCard = ({
@@ -20,6 +23,7 @@ const CommentCard = ({
   isFilled = false,
   isCharacter = false,
   isChat = false,
+  sx,
 }: CommentCardProps) => {
   const { ref, inView } = useInView({
     threshold: 0.1,
@@ -44,6 +48,7 @@ const CommentCard = ({
         ...(!isCharacter && {
           mb: 1.3,
         }),
+        ...sx,
       }}
     >
       {isCharacter && (
