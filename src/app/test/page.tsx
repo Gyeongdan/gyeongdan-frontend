@@ -7,10 +7,10 @@ import { Box, Button, FormControlLabel, Radio, RadioGroup, Stack } from '@mui/ma
 import CommentCard from '@/components/CommentCard';
 import GradientBox from '@/components/GradientBox';
 import color from '@/constants/color';
-import testData from '@/mocks/test';
+import questions from '@/constants/question';
 
 const Page = () => {
-  const [selectedValue, setSelectedValue] = useState<number[]>(Array(testData.length).fill(0));
+  const [selectedValue, setSelectedValue] = useState<number[]>(Array(questions.length).fill(0));
 
   const isNotSelected = selectedValue.includes(0);
 
@@ -33,20 +33,20 @@ const Page = () => {
         />
       </Box>
       <Stack alignItems="center" my={10} spacing={10}>
-        {testData.map((item) => (
-          <Stack key={item.title} alignItems="center" width="600px">
-            <Box mb={2} textAlign="center" width="550px">
-              <CommentCard isStroke content={item.title} sx={{ fontSize: 20, p: 0.5 }} />
+        {questions.map((item) => (
+          <Stack key={item.question} alignItems="center" width="600px">
+            <Box mb={2} textAlign="center" width="580px">
+              <CommentCard isStroke content={item.question} sx={{ fontSize: 20, p: 0.5 }} />
             </Box>
             <RadioGroup
               row
-              sx={{ bgcolor: 'white', borderRadius: 5, p: 2, px: 20, width: '900px', justifyContent: 'space-between' }}
-              value={selectedValue[testData.indexOf(item)]}
-              onChange={(e) => handleChange(testData.indexOf(item), Number(e.target.value))}
+              sx={{ bgcolor: 'white', borderRadius: 5, p: 2, px: 12, width: '900px', justifyContent: 'space-between' }}
+              value={selectedValue[questions.indexOf(item)]}
+              onChange={(e) => handleChange(questions.indexOf(item), Number(e.target.value))}
             >
-              <FormControlLabel control={<Radio />} label={item.option1.option} value="1" />
-              <FormControlLabel control={<Radio />} label={item.option2.option} value="2" />
-              <FormControlLabel control={<Radio />} label={item.option3.option} value="3" />
+              <FormControlLabel control={<Radio />} label={item.answer1} sx={{ width: 220 }} value="1" />
+              <FormControlLabel control={<Radio />} label={item.answer2} sx={{ width: 220 }} value="2" />
+              <FormControlLabel control={<Radio />} label={item.answer3} sx={{ width: 220 }} value="3" />
             </RadioGroup>
           </Stack>
         ))}
