@@ -1,8 +1,8 @@
 'use client';
 
+import React from 'react';
 import { Box, Stack, Typography, Grid } from '@mui/material';
 import dynamic from 'next/dynamic';
-import { useEffect, useState } from 'react';
 import CommentCard from '@/components/CommentCard';
 import GradientBox from '@/components/GradientBox';
 import NewsCardVertical from '@/components/NewsCardVertical';
@@ -14,16 +14,6 @@ import insightsDataList from '@/mocks/insights';
 const ChartRenderer = dynamic(() => import('@/components/ChartRenderer'), { ssr: false });
 
 const Page = () => {
-  const [isClient, setIsClient] = useState(false);
-
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
-
-  if (!isClient) {
-    return null;
-  }
-
   return (
     <GradientBox sx={{ height: '100vh', width: '100vw' }}>
       <Stack alignItems="center">
