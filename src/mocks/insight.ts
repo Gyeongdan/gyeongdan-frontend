@@ -1,3 +1,5 @@
+import { Data } from 'plotly.js';
+
 const insightData = {
   id: 4,
   comment: `오늘의 인사이트에 대해 알려줄게!
@@ -16,14 +18,14 @@ const insightData = {
         type: 'scatter',
         mode: 'lines+markers',
         marker: { color: 'blue' },
-      },
+      } as Data,
       {
         type: 'bar',
         x: ['2010', '2012', '2014', '2016', '2018', '2020'],
         y: [2.8, 2.9, 3.1, 3.2, 3.3, 3.3],
         name: 'Sea Level Rise (mm)',
         marker: { color: 'lightblue' },
-      },
+      } as Data,
     ],
     layout: {
       title: '연도별 해수면 상승 추이',
