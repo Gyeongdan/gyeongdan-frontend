@@ -2,8 +2,8 @@
 
 import React from 'react';
 import { Box, Stack, Typography, Grid } from '@mui/material';
-
 import dynamic from 'next/dynamic';
+
 import CommentCard from '@/components/CommentCard';
 import GradientBox from '@/components/GradientBox';
 import NewsCardVertical from '@/components/NewsCardVertical';
