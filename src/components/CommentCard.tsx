@@ -2,7 +2,7 @@
 
 import { useInView } from 'react-intersection-observer';
 
-import { Box, Card, CardMedia, Typography } from '@mui/material';
+import { Box, Card, CardMedia, SxProps, Typography } from '@mui/material';
 
 import color from '@/constants/color';
 
@@ -12,6 +12,7 @@ interface CommentCardProps {
   isFilled?: boolean;
   isCharacter?: boolean;
   isChat?: boolean;
+  sx: SxProps;
 }
 
 const CommentCard = ({
@@ -20,6 +21,7 @@ const CommentCard = ({
   isFilled = false,
   isCharacter = false,
   isChat = false,
+  sx,
 }: CommentCardProps) => {
   const { ref, inView } = useInView({
     threshold: 0.1,
@@ -68,11 +70,13 @@ const CommentCard = ({
             background: isFilled
               ? `linear-gradient(${color.gradient_blue_dark}, ${color.gradient_blue_light})`
               : 'white',
+            ...sx,
           }}
         >
           <Typography
             color={isFilled ? 'white' : 'black'}
             fontFamily="GmarketSansMedium"
+            sx={sx}
             variant="body2"
             whiteSpace="pre-line"
           >
