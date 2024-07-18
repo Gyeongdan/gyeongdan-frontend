@@ -1,11 +1,28 @@
+'use client';
+
 import Image from 'next/image';
+import { useEffect, useState } from 'react';
 
 import { Link, Stack, TextField, Typography } from '@mui/material';
 
 import GradientBox from '@/components/GradientBox';
 import color from '@/constants/color';
 
+import { getKakaoLogin } from '../api/login';
+
 const Page = () => {
+  const [loginUrl, setLoginUrl] = useState<string>('');
+
+  useEffect(() => {
+    getKakaoLogin().then((res) => {
+      if (res.status) {
+        setLoginUrl(res.data);
+      } else {
+        alert(res.message || '로그인 중 오류가 발생했습니다.');
+      }
+    });
+  }, [setLoginUrl]);
+
   return (
     <GradientBox
       sx={{ minHeight: 'calc(100vh - 100px)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
@@ -31,7 +48,7 @@ const Page = () => {
             sx={{ width: '90%' }}
             variant="outlined"
           />
-          <Link height={50} href="/" position="relative" width="65%">
+          <Link height={50} href={loginUrl} position="relative" width="65%">
             <Image
               fill
               priority

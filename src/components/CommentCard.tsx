@@ -14,6 +14,7 @@ interface CommentCardProps {
   isFilled?: boolean;
   isCharacter?: boolean;
   isChat?: boolean;
+  sx?: SxProps;
   sx?: SxProps<Theme>;
 }
 
@@ -73,11 +74,13 @@ const CommentCard = ({
             background: isFilled
               ? `linear-gradient(${color.gradient_blue_dark}, ${color.gradient_blue_light})`
               : 'white',
+            ...sx,
           }}
         >
           <Typography
             color={isFilled ? 'white' : 'black'}
             fontFamily="GmarketSansMedium"
+            sx={sx}
             variant="body2"
             whiteSpace="pre-line"
           >
