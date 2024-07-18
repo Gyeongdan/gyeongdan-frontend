@@ -1,5 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  experimental: {
+    swcPlugins: [['@swc-jotai/react-refresh', {}]],
+  },
+  output: 'standalone',
   images: {
     remotePatterns: [
       {
