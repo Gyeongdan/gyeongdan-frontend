@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { Box, Card, CardContent, Stack, Typography } from '@mui/material';
 
 import CommentCard from '@/components/CommentCard';
-import StyledGradientBox from '@/components/GradientBox';
+import GradientBox from '@/components/GradientBox';
 import Headline from '@/components/Headline';
 import TooltipText from '@/components/TooltipText';
 import color from '@/constants/color';
@@ -17,7 +17,7 @@ const Page = () => {
     : [];
 
   return (
-    <StyledGradientBox>
+    <GradientBox>
       <Stack alignItems="center" p={10}>
         <Box sx={{ maxWidth: '600px' }}>
           <Box sx={{ marginBottom: '2rem' }}>
@@ -63,7 +63,7 @@ const Page = () => {
           />
         </Box>
       </Stack>
-    </StyledGradientBox>
+    </GradientBox>
   );
 };
 
