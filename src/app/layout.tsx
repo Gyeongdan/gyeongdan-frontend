@@ -2,8 +2,8 @@ import { Box } from '@mui/material';
 
 import Header from '@/components/Header';
 
-import ClientThemeProvider from './ClientThemeProvider';
 import '../../public/fonts.css';
+import Providers from './Providers';
 
 export const metadata = {
   title: 'Gyeongdan',
@@ -17,12 +17,12 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
         <meta content="upgrade-insecure-requests" httpEquiv="Content-Security-Policy" />
       </head>
       <body>
-        <ClientThemeProvider>
+        <Providers>
           <Box minHeight="100vh" width="100vw">
             <Header />
             {children}
           </Box>
-        </ClientThemeProvider>
+        </Providers>
       </body>
     </html>
   );

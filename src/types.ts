@@ -16,3 +16,10 @@ export interface Document {
   link: string;
   snippet: string;
 }
+
+export interface Question {
+  title: string;
+  option1: { option: string };
+  option2: { option: string };
+  option3: { option: string };
+}

@@ -9,7 +9,6 @@ const springApi: AxiosInstance = axios.create({
     'Content-Type': 'application/json',
   },
 });
-
 const fastApi: AxiosInstance = axios.create({
   baseURL: FASTAPI_API_URL,
   headers: {
