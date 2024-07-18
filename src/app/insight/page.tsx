@@ -61,11 +61,13 @@ const Page = () => {
             <Grid container spacing={2} sx={{ marginTop: '1rem', maxWidth: '1500px' }}>
               {insightsDataList.slice(0, 3).map((_insightData) => (
                 <Grid key={_insightData.id} item md={4} xs={12}>
-                  <NewsCardVertical
-                    date={_insightData.date}
-                    description={_insightData.content}
-                    title={_insightData.title}
-                  />
+                  <Box style={{ borderRadius: 24 }}>
+                    <NewsCardVertical
+                      date={_insightData.date}
+                      description={_insightData.content}
+                      title={_insightData.title}
+                    />
+                  </Box>
                 </Grid>
               ))}
             </Grid>
