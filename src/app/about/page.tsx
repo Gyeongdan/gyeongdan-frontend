@@ -1,14 +1,13 @@
+// src/app/about/page.tsx
+
 'use client';
 
-import { Box } from '@mui/material';
-import GradientBox from '@/components/GradientBox';
+import React from 'react';
 
-const Page = () => {
-  return (
-    <Box>
-      <GradientBox sx={{ height: '100vh' }} />
-    </Box>
-  );
+import FullpageComponent from '@/components/FullpageComponent';
+
+const AboutPage: React.FC = () => {
+  return <FullpageComponent />;
 };
 
-export default Page;
+export default AboutPage;
