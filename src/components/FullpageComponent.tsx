@@ -1,8 +1,9 @@
 import React from 'react';
 
 import ReactFullpage from '@fullpage/react-fullpage';
-import AboutPageComponent from '@/components/AboutPageComponent';
+
 import MainPage from '@/app/about/mainpage';
+import AboutPageComponent from '@/components/AboutPageComponent';
 
 const FullpageComponent: React.FC = () => (
   <ReactFullpage
@@ -11,10 +12,14 @@ const FullpageComponent: React.FC = () => (
       return (
         <div id="fullpage-wrapper" style={{ height: '100vh' }}>
           <MainPage />
-          <AboutPageComponent title="1번쨰" style={{backgroundColor: 'linear-gradient(to bottom, rgba(29, 112, 241, 0), rgba(26, 197, 251, 1))',}} description="This is the about page" />
-          <AboutPageComponent title="" description="This is the about page" />
-          <AboutPageComponent title="기능 2개 설명" description="This is the about page" />
-          <AboutPageComponent title="우리가 주고 싶은 관점" description="This is the about page" />
+          <AboutPageComponent
+            description="This is the about page"
+            style={{ backgroundColor: 'linear-gradient(to bottom, rgba(29, 112, 241, 0), rgba(26, 197, 251, 1))' }}
+            title="1번쨰"
+          />
+          <AboutPageComponent description="This is the about page" title="" />
+          <AboutPageComponent description="This is the about page" title="기능 2개 설명" />
+          <AboutPageComponent description="This is the about page" title="우리가 주고 싶은 관점" />
         </div>
       );
     }}

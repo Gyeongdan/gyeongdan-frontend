@@ -1,5 +1,6 @@
-import { Box, SxProps } from '@mui/material';
 import React, { ReactNode } from 'react';
+
+import { Box, SxProps } from '@mui/material';
 
 interface AboutPageComponentProps {
   title?: string;
@@ -26,6 +27,7 @@ const AboutPageComponent = ({ title, description, sx, style, children }: AboutPa
     >
       <div>
         {title && <h1>{title}</h1>}
+        <p>{description}</p>
         {children}
       </div>
     </Box>
