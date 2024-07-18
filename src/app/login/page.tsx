@@ -4,6 +4,7 @@ import { Link, Stack, TextField, Typography } from '@mui/material';
 
 import GradientBox from '@/components/GradientBox';
 import color from '@/constants/color';
+import KAKAO_LOGIN_URL from '@/constants/login';
 
 const Page = () => {
   return (
@@ -31,7 +32,7 @@ const Page = () => {
             sx={{ width: '90%' }}
             variant="outlined"
           />
-          <Link height={50} href="/" position="relative" width="65%">
+          <Link height={50} href={KAKAO_LOGIN_URL} position="relative" width="65%">
             <Image
               fill
               priority
