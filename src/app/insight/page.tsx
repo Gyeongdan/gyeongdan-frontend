@@ -54,7 +54,7 @@ const Page = () => {
               />
             </Box>
           </Box>
-          <Box sx={{ maxWidth: '1200px', marginTop: '2rem' }}>
+          <Box sx={{ maxWidth: '1500px', marginTop: '2rem' }}>
             <Typography color={color.blue} variant="h4">
               지난 인사이트
             </Typography>
