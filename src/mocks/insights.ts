@@ -1,3 +1,5 @@
+import { Data } from 'plotly.js';
+
 const insightsDataList = [
   {
     id: 1,
@@ -13,14 +15,14 @@ const insightsDataList = [
           type: 'scatter',
           mode: 'lines+markers',
           marker: { color: 'orange' },
-        },
+        } as Data,
         {
           type: 'bar',
           x: ['2012', '2014', '2016', '2018', '2020'],
           y: [18.2, 18.5, 18.8, 19.0, 19.4],
           name: 'Daily Bread Consumption (g)',
           marker: { color: 'lightblue' },
-        },
+        } as Data,
       ],
       layout: {
         title: '한국의 연도별 빵 소비량',
@@ -47,14 +49,14 @@ const insightsDataList = [
           type: 'scatter',
           mode: 'lines+markers',
           marker: { color: 'blue' },
-        },
+        } as Data,
         {
           type: 'bar',
           x: ['2010', '2012', '2014', '2016', '2018', '2020'],
           y: [30, 35, 40, 45, 50, 55],
           name: 'Extreme Weather Events',
           marker: { color: 'lightgreen' },
-        },
+        } as Data,
       ],
       layout: {
         title: '기후 변화에 따른 극단적 기후 현상 증가',
@@ -81,14 +83,14 @@ const insightsDataList = [
           type: 'scatter',
           mode: 'lines+markers',
           marker: { color: 'green' },
-        },
+        } as Data,
         {
           type: 'bar',
           x: ['2016', '2017', '2018', '2019', '2020', '2021'],
           y: [7, 14, 21, 28, 35, 42],
           name: 'AI Adoption in Industries',
           marker: { color: 'purple' },
-        },
+        } as Data,
       ],
       layout: {
         title: '산업별 AI 기술 채택 증가',
