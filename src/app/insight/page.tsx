@@ -1,14 +1,17 @@
 'use client';
 
 import { Box, Stack, Typography, Grid } from '@mui/material';
-
-import ChartRenderer from '@/components/ChartRenderer';
+import dynamic from 'next/dynamic';
 import CommentCard from '@/components/CommentCard';
 import GradientBox from '@/components/GradientBox';
 import NewsCardVertical from '@/components/NewsCardVertical';
 import color from '@/constants/color';
 import insightData from '@/mocks/insight';
 import insightsDataList from '@/mocks/insights';
+
+const ChartRenderer = dynamic(() => import('@/components/ChartRenderer'), {
+  ssr: false,
+});
 
 const Page = () => {
   return (
