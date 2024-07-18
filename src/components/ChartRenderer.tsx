@@ -1,8 +1,7 @@
 'use client';
 
-import dynamic from 'next/dynamic';
 import React from 'react';
-
+import dynamic from 'next/dynamic';
 import { Data, Layout } from 'plotly.js';
 
 // Dynamically import Plotly component to avoid SSR issues
