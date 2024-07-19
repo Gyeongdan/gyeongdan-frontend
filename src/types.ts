@@ -2,10 +2,14 @@ export interface Article {
   id: number;
   title: string;
   content: string;
+  comment?: string;
+  publisher?: string;
   publishedAt: string;
+  url?: string;
   imageUrl?: string;
   viewCount: number;
   category: string;
+  phrase?: { [key: string]: string };
   relatedDocuments?: Document[];
   isValid: boolean;
 }

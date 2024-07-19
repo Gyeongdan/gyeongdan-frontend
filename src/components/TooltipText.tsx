@@ -1,43 +1,35 @@
 import { Tooltip, Typography } from '@mui/material';
 
-interface Phrase {
-  term: string;
-  definition: string;
-}
-
 interface TooltipTextProps {
   content: string;
-  phrasesContent: Phrase[];
+  phrasesContent: { [key: string]: string };
 }
 
 const TooltipText = ({ content, phrasesContent }: TooltipTextProps) => {
-  let count = 0;
-  const words = content.split(/(\s+)/);
+  const regex = new RegExp(`(${Object.keys(phrasesContent).join('|')})`, 'g');
+  const parts = content.split(regex);
+  const seen = new Set<string>();
 
   return (
     <>
-      {words.map((word) => {
-        const cleanWord = word.replace(/[.,/#!$%^&*;:{}=\-_`~()]/g, '').trim();
-        const phrase = phrasesContent.find(({ term }) => cleanWord.includes(term));
-        count += 1;
+      {parts.map((part) => {
+        const cleanPart = part ? part.trim() : '';
+        const definition = phrasesContent[cleanPart];
+        const isTooltipNeeded = definition && !seen.has(cleanPart);
 
-        if (phrase) {
-          return (
-            <Tooltip
-              key={`${cleanWord}-${count}`}
-              arrow
-              sx={{ textDecoration: 'underline', cursor: 'pointer' }}
-              title={phrase.definition}
-            >
-              <Typography component="span" fontSize="16px" variant="body2">
-                {word}
-              </Typography>
-            </Tooltip>
-          );
+        if (isTooltipNeeded) {
+          seen.add(cleanPart);
         }
-        return (
-          <Typography key={`${cleanWord}-${count}`} component="span" fontSize="16px" variant="body2">
-            {word}
+
+        return isTooltipNeeded ? (
+          <Tooltip key={cleanPart} arrow sx={{ textDecoration: 'underline', cursor: 'pointer' }} title={definition}>
+            <Typography component="span" fontSize="16px" variant="body2">
+              {part}
+            </Typography>
+          </Tooltip>
+        ) : (
+          <Typography key={cleanPart} component="span" fontSize="16px" variant="body2">
+            {part}
           </Typography>
         );
       })}

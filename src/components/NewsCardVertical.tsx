@@ -11,7 +11,7 @@ interface NewsCardVerticalProps {
 
 const NewsCardVertical = ({ date, title, description, imageUrl }: NewsCardVerticalProps) => {
   return (
-    <Card sx={{ maxWidth: 350, boxShadow: 'none' }}>
+    <Card sx={{ maxWidth: 350, boxShadow: 'none', borderRadius: 4 }}>
       {imageUrl && (
         <CardMedia alt="articleImage" component="img" image={imageUrl} sx={{ height: 190, borderRadius: 2 }} />
       )}
