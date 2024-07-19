@@ -50,7 +50,7 @@ const Page = async ({ params }: { params: { id: number } }) => {
           <Typography color={color.blue} fontSize="20px" py={2} variant="h3">
             AI 산지니가 선별한 기사 속 경단어
           </Typography>
-          <CommentCard isCharacter isChat content="헷갈릴만한 단어를 준비해봤어 😆" />
+          <CommentCard isCharacter isChat content="알면 좋을만한 표현을 준비해봤어 😆" />
           <CommentCard
             isChat
             content={Object.entries(data.phrase)
