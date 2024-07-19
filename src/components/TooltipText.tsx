@@ -13,7 +13,7 @@ const TooltipText = ({ content, phrasesContent }: TooltipTextProps) => {
   return (
     <>
       {parts.map((part) => {
-        const cleanPart = part.trim();
+        const cleanPart = part ? part.trim() : '';
         const definition = phrasesContent[cleanPart];
         const isTooltipNeeded = definition && !seen.has(cleanPart);
 
