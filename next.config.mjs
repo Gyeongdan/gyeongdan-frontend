@@ -3,6 +3,7 @@ const nextConfig = {
   experimental: {
     swcPlugins: [['@swc-jotai/react-refresh', {}]],
   },
+  reactStrictMode: false,
   output: 'standalone',
   images: {
     remotePatterns: [
