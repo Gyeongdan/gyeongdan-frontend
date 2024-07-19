@@ -1,3 +1,5 @@
+'use client';
+
 import Image from 'next/image';
 import React, { ReactNode } from 'react';
 
@@ -8,7 +10,6 @@ interface AboutPageComponentProps {
   description?: string;
   category?: string;
   sx?: SxProps;
-  style?: React.CSSProperties;
   children?: ReactNode;
   imgageUrl?: string;
   isright?: boolean;
@@ -19,7 +20,6 @@ const AboutPageComponent = ({
   description,
   category,
   sx,
-  style,
   children,
   imgageUrl,
   isright = false,
@@ -36,10 +36,9 @@ const AboutPageComponent = ({
         textAlign: 'center',
         whiteSpace: 'pre-line',
         ...sx,
-        ...style,
       }}
     >
-      <Stack alignItems="center" direction="row" justifyContent={isright && 'end'} spacing={2}>
+      <Stack alignItems="center" direction="row" justifyContent={isright ? 'flex-end' : undefined} spacing={2}>
         {imgageUrl && !isright && <Image alt="newsletter" height={100} src={imgageUrl} width={100} />}
         <Typography color="primary" px={3} variant="h1">
           {category}
@@ -54,5 +53,4 @@ const AboutPageComponent = ({
     </Box>
   );
 };
-
 export default AboutPageComponent;

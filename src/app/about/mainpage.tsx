@@ -18,7 +18,7 @@ const float = keyframes`
 const MainPage = () => {
   return (
     <AboutPageComponent
-      style={{
+      sx={{
         background: 'linear-gradient(to bottom, rgba(29, 112, 241, 0), rgba(26, 197, 251, 1))',
         alignItems: 'center',
         paddingBottom: '200px',
