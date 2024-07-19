@@ -1,13 +1,9 @@
-import Image from 'next/image';
 import React from 'react';
 
 import ReactFullpage from '@fullpage/react-fullpage';
-import { Stack } from '@mui/material';
 
 import MainPage from '@/app/about/mainpage';
 import AboutPageComponent from '@/components/AboutPageComponent';
-
-import GradientBox from './GradientBox';
 
 const FullpageComponent: React.FC = () => (
   <ReactFullpage
