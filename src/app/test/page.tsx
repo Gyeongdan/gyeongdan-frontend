@@ -7,15 +7,16 @@ import { Box, Button, FormControlLabel, Radio, RadioGroup, Stack } from '@mui/ma
 import CommentCard from '@/components/CommentCard';
 import GradientBox from '@/components/GradientBox';
 import color from '@/constants/color';
+import userType from '@/constants/userType';
 import { Question } from '@/types';
 
-import { getQuestions } from '../api/test';
+import { getQuestions, postUserType } from '../api/test';
 
 const Page = () => {
   const [questions, setQuestions] = useState<Question[]>([]);
   const [selectedValue, setSelectedValue] = useState<number[]>([]);
 
-  const isNotSelected = selectedValue.includes(0);
+  const isNotSelected = selectedValue.includes(-1);
 
   const handleChange = (index: number, value: number) => {
     const newSelectedValue = [...selectedValue];
@@ -24,14 +25,21 @@ const Page = () => {
   };
 
   const handleSubmit = () => {
-    // TODO: post api 연결
+    postUserType({ answers: selectedValue }).then((res) => {
+      if (res.result) {
+        const resultUserType = userType[res.data.userType];
+        alert(`당신의 경제 유형은 ${resultUserType} 입니다.\n추후 경제 유형에 따른 기사를 추천해드릴 예정입니다.`);
+      } else {
+        throw res.message;
+      }
+    });
   };
 
   useEffect(() => {
     getQuestions().then((res) => {
       if (res.result) {
         setQuestions(res.data);
-        setSelectedValue(Array(res.data.length).fill(0));
+        setSelectedValue(Array(res.data.length).fill(-1));
       }
     });
   }, []);
@@ -56,9 +64,9 @@ const Page = () => {
               value={selectedValue[questions.indexOf(item)]}
               onChange={(e) => handleChange(questions.indexOf(item), Number(e.target.value))}
             >
-              <FormControlLabel control={<Radio />} label={item.option1.option} sx={{ width: 220 }} value="1" />
-              <FormControlLabel control={<Radio />} label={item.option2.option} sx={{ width: 220 }} value="2" />
-              <FormControlLabel control={<Radio />} label={item.option3.option} sx={{ width: 220 }} value="3" />
+              <FormControlLabel control={<Radio />} label={item.option1.option} sx={{ width: 220 }} value="0" />
+              <FormControlLabel control={<Radio />} label={item.option2.option} sx={{ width: 220 }} value="1" />
+              <FormControlLabel control={<Radio />} label={item.option3.option} sx={{ width: 220 }} value="2" />
             </RadioGroup>
           </Stack>
         ))}
