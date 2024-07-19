@@ -34,7 +34,7 @@ const Page = async ({ params }: { params: { id: number } }) => {
                   alt="articleImage"
                   height={400}
                   src={data.imageUrl}
-                  style={{ objectFit: 'cover' }}
+                  style={{ objectFit: 'contain' }}
                   width={600}
                 />
               )}
