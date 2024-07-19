@@ -1,43 +1,27 @@
 import { Tooltip, Typography } from '@mui/material';
 
-interface Phrase {
-  term: string;
-  definition: string;
-}
-
 interface TooltipTextProps {
   content: string;
-  phrasesContent: Phrase[];
+  phrasesContent: { [key: string]: string };
 }
 
 const TooltipText = ({ content, phrasesContent }: TooltipTextProps) => {
-  let count = 0;
-  const words = content.split(/(\s+)/);
+  const regex = new RegExp(`(${Object.keys(phrasesContent).join('|')})`, 'g');
+  const parts = content.split(regex);
 
   return (
     <>
-      {words.map((word) => {
-        const cleanWord = word.replace(/[.,/#!$%^&*;:{}=\-_`~()]/g, '').trim();
-        const phrase = phrasesContent.find(({ term }) => cleanWord.includes(term));
-        count += 1;
-
-        if (phrase) {
-          return (
-            <Tooltip
-              key={`${cleanWord}-${count}`}
-              arrow
-              sx={{ textDecoration: 'underline', cursor: 'pointer' }}
-              title={phrase.definition}
-            >
-              <Typography component="span" fontSize="16px" variant="body2">
-                {word}
-              </Typography>
-            </Tooltip>
-          );
-        }
-        return (
-          <Typography key={`${cleanWord}-${count}`} component="span" fontSize="16px" variant="body2">
-            {word}
+      {parts.map((part) => {
+        const definition = phrasesContent[part.trim()];
+        return definition ? (
+          <Tooltip key={part} arrow sx={{ textDecoration: 'underline', cursor: 'pointer' }} title={definition}>
+            <Typography component="span" fontSize="16px" variant="body2">
+              {part}
+            </Typography>
+          </Tooltip>
+        ) : (
+          <Typography key={part} component="span" fontSize="16px" variant="body2">
+            {part}
           </Typography>
         );
       })}
