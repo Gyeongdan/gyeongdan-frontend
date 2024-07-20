@@ -48,6 +48,7 @@ const Page = () => {
       } else {
         throw res.message;
       }
+      console.log(`userName: ${res}`);
     });
   }, []);
 
