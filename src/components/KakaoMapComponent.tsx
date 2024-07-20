@@ -72,7 +72,6 @@ const KakaoMapComponent: React.FC<KakaoMapComponentProps> = ({ villages }) => {
           window.kakao.maps.load(() => {
             initializeMap();
           });
-        } else {
         }
       };
       script.onerror = () => {};
