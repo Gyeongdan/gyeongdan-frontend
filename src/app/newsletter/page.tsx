@@ -15,7 +15,7 @@ import suggestionData from '@/mocks/suggestion';
 import { Article } from '@/types';
 
 import { getArticleAll, getPopularArticle } from '../api/newsletter';
-import { getUserName } from '../api/user';
+import { getUser } from '../api/user';
 
 const Page = () => {
   const [selectedTab, setSelectedTab] = useState(articleCategory[0]);
@@ -41,7 +41,7 @@ const Page = () => {
       }
     });
     if (user?.token) {
-      getUserName(user.token).then((res) => {
+      getUser(user.token).then((res) => {
         if (res.status) {
           setUserName(res.data.name);
         } else {
