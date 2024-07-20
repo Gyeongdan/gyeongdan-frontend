@@ -41,12 +41,12 @@ const Header = () => {
         }}
       >
         <Stack alignItems="center" direction="row" height="100px" justifyContent="space-between" px={15}>
-          <Stack direction="row">
+          <Link color="inherit" display="flex" flexDirection="row" href="/newsletter" underline="none">
             <Typography variant="h1">경단</Typography>
             <Typography color={color.gray_dark} mt={2} variant="subtitle1">
               경제를 단순하게
             </Typography>
-          </Stack>
+          </Link>
           <Stack alignItems="center" direction="row" mt={2} spacing={6}>
             {mainCategory.map((item) => (
               <Link
