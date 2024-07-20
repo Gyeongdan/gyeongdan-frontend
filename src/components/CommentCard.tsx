@@ -48,7 +48,6 @@ const CommentCard = ({
         ...(!isCharacter && {
           mb: 1.3,
         }),
-        ...sx,
       }}
     >
       {isCharacter && (
@@ -73,11 +72,13 @@ const CommentCard = ({
             background: isFilled
               ? `linear-gradient(${color.gradient_blue_dark}, ${color.gradient_blue_light})`
               : 'white',
+            ...sx,
           }}
         >
           <Typography
             color={isFilled ? 'white' : 'black'}
             fontFamily="GmarketSansMedium"
+            sx={sx}
             variant="body2"
             whiteSpace="pre-line"
           >
