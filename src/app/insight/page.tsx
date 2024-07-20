@@ -27,8 +27,8 @@ const Page = () => {
   }
 
   return (
-    <GradientBox sx={{ height: '100vh', width: '100vw' }}>
-      <Stack alignItems="center">
+    <GradientBox sx={{ minHeight: 'calc(100vh - 100px)', width: '100vw' }}>
+      <Stack alignItems="center" py={5}>
         <Box sx={{ maxWidth: '1500px', alignItems: 'center' }}>
           <Box sx={{ width: '100%' }}>
             <Typography color={color.blue} mb="1.5rem" variant="h4">
