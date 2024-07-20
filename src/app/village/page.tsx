@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { Box, CardMedia, Divider, Stack, Typography } from '@mui/material';
 
@@ -15,6 +15,15 @@ import { Village } from '@/types';
 
 const Page = () => {
   const [villages] = useState<Village[]>(hiddenGems);
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  if (!isClient) {
+    return null;
+  }
 
   return (
     <Box>
