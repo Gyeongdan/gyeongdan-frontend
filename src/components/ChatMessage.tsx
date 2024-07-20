@@ -5,7 +5,7 @@ import { Box, Button } from '@mui/material';
 import CommentCard from '@/components/CommentCard';
 
 interface ButtonProps {
-  id: string;
+  id: number;
   text: string;
   onClick: () => void;
 }

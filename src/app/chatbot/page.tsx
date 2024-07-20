@@ -15,9 +15,10 @@ const initialMessage =
   '안녕 나는 AI 산지니야🤖\n최근 네가 읽었던 글에 대한 질문이나, 경제 단어에 대해서 더 알려줄게😆\n경단에 대해서 더 알려주는 것도 가능가능!!';
 
 interface Message {
+  id: number;
   content?: string;
   isUser?: boolean;
-  buttons?: Array<{ text: string; onClick: () => void }>;
+  buttons?: Array<{ id: number; text: string; onClick: () => void }>;
 }
 
 const Page = () => {
@@ -33,8 +34,8 @@ const Page = () => {
       } else if (type === 'gyeongdan') {
         response = await fetch('/api/gyeongdan');
       }
-      const data = await response.json();
-      setMessages((prevMessages) => [...prevMessages, { content: data.message, isUser: false }]);
+      const data = await (response as Response).json();
+      setMessages((prevMessages) => [...prevMessages, { id: 0, content: data.message, isUser: false }]);
     } catch (error) {
       console.error('Error fetching data:', error);
     }
@@ -42,12 +43,13 @@ const Page = () => {
 
   useEffect(() => {
     setMessages([
-      { content: initialMessage, isUser: false },
+      { id: 0, content: initialMessage, isUser: false },
       {
+        id: 0,
         buttons: [
-          { text: '질문하기', onClick: () => handleButtonClick('question') },
-          { text: '용어 찾기', onClick: () => handleButtonClick('term') },
-          { text: '경단 설명', onClick: () => handleButtonClick('gyeongdan') },
+          { id: 0, text: '질문하기', onClick: () => handleButtonClick('question') },
+          { id: 0, text: '용어 찾기', onClick: () => handleButtonClick('term') },
+          { id: 0, text: '경단 설명', onClick: () => handleButtonClick('gyeongdan') },
         ],
         isUser: false,
       },
@@ -55,11 +57,11 @@ const Page = () => {
   }, []);
 
   const handleSendMessage = (message: string) => {
-    const newMessage: Message = { content: message, isUser: true };
+    const newMessage: Message = { id: 0, content: message, isUser: true };
     setMessages((prevMessages) => [...prevMessages, newMessage]);
 
     setTimeout(() => {
-      setMessages((prevMessages) => [...prevMessages, { content: message, isUser: false }]);
+      setMessages((prevMessages) => [...prevMessages, { id: 0, content: message, isUser: false }]);
     }, 500);
   };
 

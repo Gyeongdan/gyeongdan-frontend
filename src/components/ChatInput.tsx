@@ -41,6 +41,7 @@ const ChatInput = ({ onSendMessage }: ChatInputProps) => {
     >
       <TextField
         fullWidth
+        disabled={userMessage.trim() === ''}
         placeholder="AI 산지니에게 대화를 요청해보세요!"
         sx={{
           marginRight: '1rem',
@@ -56,7 +57,6 @@ const ChatInput = ({ onSendMessage }: ChatInputProps) => {
         variant="outlined"
         onChange={handleInputChange}
         onKeyPress={handleKeyPress}
-        disabled={userMessage.trim() === ''}
       />
       <Button
         color="primary"

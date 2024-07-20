@@ -16,10 +16,10 @@ const StyledChatContainer = styled(Box)`
 `;
 
 interface Message {
-  id: string;
+  id: number;
   content?: string;
   isUser?: boolean;
-  buttons?: Array<{ text: string; onClick: () => void }>;
+  buttons?: Array<{ id: number; text: string; onClick: () => void }>;
 }
 
 interface ChatContainerProps {

@@ -29,6 +29,8 @@ const Page = () => {
       if (res.result) {
         const resultUserType = userType[res.data.userType];
         alert(`당신의 경제 유형은 ${resultUserType} 입니다.\n추후 경제 유형에 따른 기사를 추천해드릴 예정입니다.`);
+        console.log(res.data);
+        console.log(selectedValue);
       } else {
         throw res.message;
       }
