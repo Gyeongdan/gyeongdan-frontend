@@ -30,7 +30,7 @@ const Page = () => {
             {villages.slice(0, 3).map((village) => (
               <Box key={village.id} flex={1} maxWidth="48%">
                 <NewsCardVertical
-                  date={village.date}
+                  date={village.publishedAt}
                   description={village.content}
                   imageUrl={village.imageUrl}
                   title={village.title}
