@@ -74,7 +74,7 @@ const Page = () => {
         flexDirection: 'row',
         overflow: 'hidden',
         px: '6rem',
-        py: '3rem',
+        pt: 5,
         pb: '5rem',
       }}
     >
