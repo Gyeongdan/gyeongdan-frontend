@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 
-import { Button, Link, Stack, Typography, Box, Avatar } from '@mui/material';
+import { Avatar, Box, Button, Link, Stack, Typography } from '@mui/material';
 
 import { getUser } from '@/app/api/user';
 import { mainCategory } from '@/constants/category';
