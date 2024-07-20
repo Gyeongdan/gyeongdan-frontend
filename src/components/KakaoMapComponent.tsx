@@ -24,7 +24,6 @@ const KakaoMapComponent: React.FC<KakaoMapComponentProps> = ({ villages }) => {
     const initializeMap = () => {
       const container = document.getElementById('map');
       if (!container) {
-        console.error('Map container not found');
         return;
       }
 
@@ -74,12 +73,9 @@ const KakaoMapComponent: React.FC<KakaoMapComponentProps> = ({ villages }) => {
             initializeMap();
           });
         } else {
-          console.error('Kakao Map API not found after script load');
         }
       };
-      script.onerror = () => {
-        console.error('Failed to load the Kakao Map script');
-      };
+      script.onerror = () => {};
 
       document.head.appendChild(script);
     };
