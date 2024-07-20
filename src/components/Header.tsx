@@ -2,14 +2,19 @@
 
 import { useState, useEffect } from 'react';
 
-import { Button, Link, Stack, Typography, Box } from '@mui/material';
+import { Button, Link, Stack, Typography, Box, Avatar } from '@mui/material';
 
+import { getUser } from '@/app/api/user';
 import { mainCategory } from '@/constants/category';
 import color from '@/constants/color';
+import useGetUser from '@/hooks/useGetUser';
 
 const Header = () => {
   const [show, setShow] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
+
+  const user = useGetUser();
+  const [userProfile, setUserProfile] = useState<string | null>(null);
 
   useEffect(() => {
     const controlHeader = () => {
@@ -27,6 +32,18 @@ const Header = () => {
       window.removeEventListener('scroll', controlHeader);
     };
   }, [lastScrollY]);
+
+  useEffect(() => {
+    if (user?.isLogin) {
+      getUser(user.token).then((res) => {
+        if (res.status) {
+          setUserProfile(res.data.profileImage);
+        } else {
+          throw res.message;
+        }
+      });
+    }
+  }, [user]);
 
   return (
     <>
@@ -47,7 +64,7 @@ const Header = () => {
               경제를 단순하게
             </Typography>
           </Link>
-          <Stack alignItems="center" direction="row" mt={2} spacing={6}>
+          <Stack alignItems="flex-end" direction="row" mt={1} spacing={6}>
             {mainCategory.map((item) => (
               <Link
                 key={item.id}
@@ -64,12 +81,15 @@ const Header = () => {
                 {item.label}
               </Link>
             ))}
-
-            <Link href="/login" underline="none">
-              <Button color="primary" sx={{ width: '100px' }} variant="outlined">
-                LOGIN
-              </Button>
-            </Link>
+            {userProfile ? (
+              <Avatar alt="profileImage" src={userProfile || ''} sx={{ width: 28, height: 28 }} />
+            ) : (
+              <Link href="/login" underline="none">
+                <Button color="primary" sx={{ width: '100px' }} variant="outlined">
+                  LOGIN
+                </Button>
+              </Link>
+            )}
           </Stack>
         </Stack>
       </Box>
