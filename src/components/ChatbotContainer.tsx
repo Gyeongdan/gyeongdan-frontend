@@ -10,9 +10,8 @@ import ChatMessage from './ChatMessage';
 const StyledChatContainer = styled(Box)`
   flex: 1;
   width: 100%;
-  max-width: 750px;
+  height: 100%;
   overflow-y: auto;
-  max-height: calc(100vh - 200px);
 `;
 
 interface Message {
