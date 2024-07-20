@@ -34,9 +34,8 @@ const ChatInput = ({ onSendMessage }: ChatInputProps) => {
       sx={{
         display: 'flex',
         width: '100%',
-        maxWidth: '600px',
+        maxWidth: '80%',
         borderRadius: '20px',
-        boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.1)',
       }}
     >
       <TextField
@@ -44,6 +43,7 @@ const ChatInput = ({ onSendMessage }: ChatInputProps) => {
         disabled={userMessage.trim() === ''}
         placeholder="AI 산지니에게 대화를 요청해보세요!"
         sx={{
+          boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.1)',
           marginRight: '1rem',
           backgroundColor: 'rgba(255, 255, 255, 0.8)',
           borderRadius: '20px',
@@ -61,6 +61,7 @@ const ChatInput = ({ onSendMessage }: ChatInputProps) => {
       <Button
         color="primary"
         sx={{
+          boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.1)',
           background: `linear-gradient(45deg, ${color.gradient_blue_dark}, ${color.gradient_blue_light})`,
           color: 'white',
           borderRadius: '20px',
