@@ -46,11 +46,11 @@ const Page = () => {
             <KakaoMapComponent villages={villages} />
           </Box>
           <Box>
-            {villages.slice(3).map((filteredItem, index) => (
+            {villages.slice(3).map((filteredItem) => (
               <NewsCardHorizontal
-                key={index}
+                key={filteredItem.id}
                 content={filteredItem.content}
-                id={index + 3}
+                id={filteredItem.id}
                 imageUrl={filteredItem.imageUrl}
                 publishedAt="2024-01-20"
                 title={filteredItem.title}
