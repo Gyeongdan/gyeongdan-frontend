@@ -21,9 +21,9 @@ const Page = () => {
   const [selectedTab, setSelectedTab] = useState(articleCategory[0]);
   const [articles, setArticles] = useState<Article[]>([]);
   const [popularArticles, setPopularArticles] = useState<Article[]>([]);
-  const [userName, setUserName] = useState<string | null>(null);
 
   const user = useGetUser();
+  const [userName, setUserName] = useState<string | null>(null);
 
   useEffect(() => {
     getArticleAll().then((res) => {
