@@ -1,4 +1,6 @@
-const hiddenGems = [
+import { Village } from '@/types';
+
+const hiddenGems: Village[] = [
   {
     id: 1,
     title: '정선 아우라지마을',
