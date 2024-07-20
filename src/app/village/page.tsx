@@ -3,10 +3,7 @@
 'use client';
 
 import { useState } from 'react';
-
-// src/app/village/page.tsx
 import { Box, CardMedia, Divider, Stack, Typography } from '@mui/material';
-
 import CommentCard from '@/components/CommentCard';
 import GradientBox from '@/components/GradientBox';
 import KakaoMapComponent from '@/components/KakaoMapComponent';
@@ -28,8 +25,8 @@ const Page = () => {
             오늘의 마을
           </Typography>
           <Stack direction="row" justifyContent="center" spacing={2}>
-            {villages.slice(0, 3).map((article, index) => (
-              <Box key={index} flex={1} maxWidth="48%">
+            {villages.slice(0, 3).map((article) => (
+              <Box key={article.id} flex={1} maxWidth="48%">
                 <NewsCardVertical
                   date="2024-01-20"
                   description={article.content}
@@ -94,7 +91,7 @@ const Page = () => {
             <Box mb={6}>
               <Typography gutterBottom color={color.gray_dark} component="p" variant="body2">
                 최근 ESG 문제와 경제 침체로 인해 사라지는 마을들에 주목하고 있습니다. MZ세대 여러분의 흥미를 끌기 위해
-                "1인 가구", "숨겨진 명소", "여행" 등의 주제를 다루며, 이로 인해 발생하는 사회적 의미를 함께 살펴보고자
+                &quot;1인 가구&quot;, &quot;숨겨진 명소&quot;, &quot;여행&quot; 등의 주제를 다루며, 이로 인해 발생하는 사회적 의미를 함께 살펴보고자
                 합니다.
               </Typography>
             </Box>
