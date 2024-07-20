@@ -1,5 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-
 'use client';
 
 import { useEffect, useState } from 'react';
@@ -12,12 +10,12 @@ import NewsCardHorizontal from '@/components/NewsCardHorizontal';
 import Suggestions from '@/components/Suggestion';
 import { articleCategory } from '@/constants/category';
 import color from '@/constants/color';
-import useMutateWithToken from '@/hooks/useMutateWithToken';
+import useGetUser from '@/hooks/useGetUser';
 import suggestionData from '@/mocks/suggestion';
 import { Article } from '@/types';
 
 import { getArticleAll, getPopularArticle } from '../api/newsletter';
-import { getUserName } from '../api/user';
+import { getUser } from '../api/user';
 
 const Page = () => {
   const [selectedTab, setSelectedTab] = useState(articleCategory[0]);
@@ -25,7 +23,7 @@ const Page = () => {
   const [popularArticles, setPopularArticles] = useState<Article[]>([]);
   const [userName, setUserName] = useState<string | null>(null);
 
-  const getUser = useMutateWithToken(getUserName);
+  const user = useGetUser();
 
   useEffect(() => {
     getArticleAll().then((res) => {
@@ -42,15 +40,19 @@ const Page = () => {
         throw res.message;
       }
     });
-    getUser().then((res) => {
-      if (res.status) {
-        setUserName(res.data.name);
-      } else {
-        throw res.message;
-      }
-      console.log(`userName: ${res}`);
-    });
   }, []);
+
+  useEffect(() => {
+    if (user?.isLogin) {
+      getUser(user.token).then((res) => {
+        if (res.status) {
+          setUserName(res.data.name);
+        } else {
+          throw res.message;
+        }
+      });
+    }
+  }, [user]);
 
   return (
     <Box>

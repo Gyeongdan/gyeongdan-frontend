@@ -9,6 +9,7 @@ const springApi: AxiosInstance = axios.create({
     'Content-Type': 'application/json',
   },
 });
+
 const fastApi: AxiosInstance = axios.create({
   baseURL: FASTAPI_API_URL,
   headers: {
@@ -31,8 +32,8 @@ const makeRequest = async (
   apiInstance: AxiosInstance,
   method: Method,
   url: string,
-  data: unknown = null,
   token: string | null = null,
+  data: unknown = null,
 ) => {
   let config: AxiosRequestConfig = {
     method,
@@ -53,10 +54,9 @@ const makeRequest = async (
   }
 };
 
-const springApiRequest = (method: Method, url: string, data: unknown = null, token: string | null = null) =>
-  makeRequest(springApi, method, url, data, token);
+export const springApiRequest = (method: Method, url: string, token: string | null = null, data: unknown = null) => {
+  return makeRequest(springApi, method, url, token, data);
+};
 
-const fastApiRequest = (method: Method, url: string, data: unknown = null, token: string | null = null) =>
-  makeRequest(fastApi, method, url, data, token);
-
-export { springApiRequest, fastApiRequest };
+export const fastApiRequest = (method: Method, url: string, token: string | null = null, data: unknown = null) =>
+  makeRequest(fastApi, method, url, token, data);
