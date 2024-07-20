@@ -44,7 +44,7 @@ const Page = () => {
     });
     getUser().then((res) => {
       if (res.status) {
-        setUserName(res.data);
+        setUserName(res.data.name);
       } else {
         throw res.message;
       }
