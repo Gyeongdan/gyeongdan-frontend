@@ -1,29 +1,21 @@
 'use client';
 
 import Image from 'next/image';
-import React, { ReactNode } from 'react';
+import { ReactNode } from 'react';
 
 import { Box, Stack, SxProps, Typography } from '@mui/material';
 
-interface AboutPageComponentProps {
+interface InfoSectionProps {
   title?: string;
   description?: string;
   category?: string;
   sx?: SxProps;
   children?: ReactNode;
-  imgageUrl?: string;
-  isright?: boolean;
+  imageUrl?: string;
+  isRight?: boolean;
 }
 
-const AboutPageComponent = ({
-  title,
-  description,
-  category,
-  sx,
-  children,
-  imgageUrl,
-  isright = false,
-}: AboutPageComponentProps) => {
+const InfoSection = ({ title, description, category, sx, children, imageUrl, isRight = false }: InfoSectionProps) => {
   return (
     <Box
       className="section"
@@ -38,12 +30,12 @@ const AboutPageComponent = ({
         ...sx,
       }}
     >
-      <Stack alignItems="center" direction="row" justifyContent={isright ? 'flex-end' : undefined} spacing={2}>
-        {imgageUrl && !isright && <Image alt="newsletter" height={100} src={imgageUrl} width={100} />}
+      <Stack alignItems="center" direction="row" justifyContent={isRight ? 'flex-end' : undefined} spacing={2}>
+        {imageUrl && !isRight && <Image alt="newsletter" height={100} src={imageUrl} width={100} />}
         <Typography color="primary" px={3} variant="h1">
           {category}
         </Typography>
-        {imgageUrl && isright && <Image alt="newsletter" height={100} src={imgageUrl} width={100} />}
+        {imageUrl && isRight && <Image alt="newsletter" height={100} src={imageUrl} width={100} />}
       </Stack>
       <div>
         {title && <h1>{title}</h1>}
@@ -53,4 +45,4 @@ const AboutPageComponent = ({
     </Box>
   );
 };
-export default AboutPageComponent;
+export default InfoSection;
