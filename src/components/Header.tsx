@@ -64,7 +64,7 @@ const Header = () => {
               경제를 단순하게
             </Typography>
           </Link>
-          <Stack alignItems="flex-end" direction="row" mt={1} spacing={6}>
+          <Stack alignItems={userProfile ? 'flex-end' : 'center'} direction="row" mt={1} spacing={6}>
             {mainCategory.map((item) => (
               <Link
                 key={item.id}
