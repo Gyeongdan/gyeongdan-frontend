@@ -18,7 +18,6 @@ const Page = ({ searchParams }: { searchParams: { code: string } }) => {
   useEffect(() => {
     if (code) {
       postKakaoLogin(code).then((res) => {
-        console.log(code);
         if (res.status) {
           setUser({
             token: res.data.accessToken,
