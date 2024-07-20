@@ -21,6 +21,7 @@ const Page = async ({ params }: { params: { id: number } }) => {
           <Box sx={{ marginBottom: '2rem' }}>
             <Headline title={village.title} uploadDate={village.publishedAt} />
           </Box>
+          <CommentCard isCharacter isStroke content={`오늘은 ${village.title}에 대해 소개해줄게😃`} />
           <Box mt="2.5rem">
             <Box>
               {village.imageUrl && (
