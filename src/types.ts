@@ -27,3 +27,13 @@ export interface Question {
   option2: { option: string };
   option3: { option: string };
 }
+
+export interface Village {
+  id: number;
+  title: string;
+  content: string;
+  imageUrl: string;
+  x: number;
+  y: number;
+  publishedAt: string;
+}
