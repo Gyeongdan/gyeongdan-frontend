@@ -27,13 +27,13 @@ const Page = () => {
             오늘의 마을
           </Typography>
           <Stack direction="row" justifyContent="center" spacing={2}>
-            {villages.slice(0, 3).map((article) => (
-              <Box key={article.id} flex={1} maxWidth="48%">
+            {villages.slice(0, 3).map((village) => (
+              <Box key={village.id} flex={1} maxWidth="48%">
                 <NewsCardVertical
-                  date="2024-01-20"
-                  description={article.content}
-                  imageUrl={article.imageUrl}
-                  title={article.title}
+                  date={village.date}
+                  description={village.content}
+                  imageUrl={village.imageUrl}
+                  title={village.title}
                 />
               </Box>
             ))}

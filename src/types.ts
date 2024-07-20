@@ -35,4 +35,5 @@ export interface Village {
   imageUrl: string;
   x: number;
   y: number;
+  publishedAt: string;
 }
