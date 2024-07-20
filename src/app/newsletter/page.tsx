@@ -40,7 +40,10 @@ const Page = () => {
         throw res.message;
       }
     });
-    if (user?.token) {
+  }, []);
+
+  useEffect(() => {
+    if (user?.isLogin) {
       getUser(user.token).then((res) => {
         if (res.status) {
           setUserName(res.data.name);
@@ -49,7 +52,7 @@ const Page = () => {
         }
       });
     }
-  }, []);
+  }, [user]);
 
   return (
     <Box>
