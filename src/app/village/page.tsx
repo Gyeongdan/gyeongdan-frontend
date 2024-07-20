@@ -6,7 +6,7 @@ import { Box, CardMedia, Divider, Stack, Typography } from '@mui/material';
 
 import CommentCard from '@/components/CommentCard';
 import GradientBox from '@/components/GradientBox';
-import KakaoMapComponent from '@/components/KakaoMapComponent';
+import KakaoMap from '@/components/KakaoMap';
 import NewsCardHorizontal from '@/components/NewsCardHorizontal';
 import NewsCardVertical from '@/components/NewsCardVertical';
 import color from '@/constants/color';
@@ -40,7 +40,7 @@ const Page = () => {
             <Typography gutterBottom color={color.blue} component="h1" variant="h4">
               지도에서 보는 마을
             </Typography>
-            <KakaoMapComponent villages={villages} />
+            <KakaoMap villages={villages} />
           </Box>
           <Box>
             {villages.slice(3).map((filteredItem) => (

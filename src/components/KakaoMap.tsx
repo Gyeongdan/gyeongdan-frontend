@@ -15,11 +15,11 @@ interface Village {
   y: number;
 }
 
-interface KakaoMapComponentProps {
+interface KakaoMapProps {
   villages: Village[];
 }
 
-const KakaoMapComponent: React.FC<KakaoMapComponentProps> = ({ villages }) => {
+const KakaoMap= ({ villages }:KakaoMapProps) => {
   useEffect(() => {
     const initializeMap = () => {
       const container = document.getElementById('map');
@@ -93,4 +93,4 @@ const KakaoMapComponent: React.FC<KakaoMapComponentProps> = ({ villages }) => {
   );
 };
 
-export default KakaoMapComponent;
+export default KakaoMap;
