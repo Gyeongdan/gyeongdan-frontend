@@ -2,9 +2,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useEffect, useState } from 'react';
 
+import { Method } from 'axios';
+
 import useGetUser from '@/hooks/useGetUser';
 
-export function useGetWithToken(apiRequest: (token?: string | null) => Promise<any>, originUser?: any) {
+export const useGetWithToken = (apiRequest: (token?: string | null) => Promise<any>, originUser?: any) => {
   const user = originUser !== undefined ? originUser : useGetUser();
   const [result, setResult] = useState<any>();
 
@@ -21,10 +23,14 @@ export function useGetWithToken(apiRequest: (token?: string | null) => Promise<a
   }, [user, apiRequest]);
 
   return result;
-}
+};
 
-export function useMutateWithToken(apiRequest: (token: string, ...props: any[]) => Promise<any>) {
+export const useMutateWithToken = (
+  apiRequest: (method: Method, url: string, data: unknown, token: string | null) => Promise<any>,
+) => {
   const user = useGetUser();
 
-  return (...props: any[]) => apiRequest(user?.token || '', ...props);
-}
+  return (method: Method, url: string, data: unknown) => {
+    return apiRequest(method, url, data, user?.token || '');
+  };
+};
