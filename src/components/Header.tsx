@@ -7,6 +7,7 @@ import { Avatar, Box, Button, Link, Stack, Typography } from '@mui/material';
 import { getUser } from '@/app/api/user';
 import { mainCategory } from '@/constants/category';
 import color from '@/constants/color';
+import useCurrentPath from '@/hooks/useCurrentPath';
 import useGetUser from '@/hooks/useGetUser';
 
 const Header = () => {
@@ -44,6 +45,8 @@ const Header = () => {
       });
     }
   }, [user]);
+
+  useCurrentPath();
 
   return (
     <>
