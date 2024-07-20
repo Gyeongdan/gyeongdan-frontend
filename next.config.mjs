@@ -17,7 +17,7 @@ const nextConfig = {
       },
       {
         protocol: 'https',
-        hostname: 'pimg.mk.co.kr',
+        hostname: 'search.pstatic.net',
       },
     ],
   },
