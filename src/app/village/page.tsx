@@ -4,19 +4,20 @@
 
 import { useState } from 'react';
 
-import { Box, CardMedia, Divider, Stack, Typography } from "@mui/material";
+// src/app/village/page.tsx
+import { Box, CardMedia, Divider, Stack, Typography } from '@mui/material';
 
+import CommentCard from '@/components/CommentCard';
 import GradientBox from '@/components/GradientBox';
 import KakaoMapComponent from '@/components/KakaoMapComponent';
 import NewsCardHorizontal from '@/components/NewsCardHorizontal';
 import NewsCardVertical from '@/components/NewsCardVertical';
 import color from '@/constants/color';
 import hiddenGems from '@/mocks/villages';
-import { Article, Village } from '@/types';
-import CommentCard from "@/components/CommentCard";
+import { Village } from '@/types';
 
 const Page = () => {
-  const [articles, setArticles] = useState<Village[]>(hiddenGems);
+  const [villages] = useState<Village[]>(hiddenGems);
 
   return (
     <Box>
@@ -27,7 +28,7 @@ const Page = () => {
             오늘의 마을
           </Typography>
           <Stack direction="row" justifyContent="center" spacing={2}>
-            {articles.slice(0, 3).map((article, index) => (
+            {villages.slice(0, 3).map((article, index) => (
               <Box key={index} flex={1} maxWidth="48%">
                 <NewsCardVertical
                   date="2024-01-20"
@@ -42,10 +43,10 @@ const Page = () => {
             <Typography gutterBottom color={color.blue} component="h1" variant="h4">
               지도에서 보는 마을
             </Typography>
-            <KakaoMapComponent villages={articles} />
+            <KakaoMapComponent villages={villages} />
           </Box>
           <Box>
-            {articles.slice(3).map((filteredItem, index) => (
+            {villages.slice(3).map((filteredItem, index) => (
               <NewsCardHorizontal
                 key={index}
                 content={filteredItem.content}
@@ -62,8 +63,7 @@ const Page = () => {
           <Stack mt={6} pl={6} spacing={2} width="100%">
             <Box>
               <CommentCard
-                sx={{ textAlign: 'center', fontSize: 14 }}
-                isFilled={true}
+                isFilled
                 content={
                   <div style={{ display: 'flex', alignItems: 'center' }}>
                     <CardMedia
@@ -71,11 +71,16 @@ const Page = () => {
                       image="/images/sanjinee.png"
                       sx={{ width: 50, height: 50, minWidth: 50, objectFit: 'contain', marginRight: 1 }}
                     />
-                    <Typography variant="body2" component="p" sx={{ fontWeight: 'bold', fontSize:15, whiteSpace: 'pre-line' }}>
+                    <Typography
+                      component="p"
+                      sx={{ fontWeight: 'bold', fontSize: 15, whiteSpace: 'pre-line' }}
+                      variant="body2"
+                    >
                       잊혀져 가는 마을,{'\n'}함께 지켜요! 🌿
                     </Typography>
                   </div>
                 }
+                sx={{ textAlign: 'center', fontSize: 14 }}
               />
             </Box>
             <Box mb={4}>
