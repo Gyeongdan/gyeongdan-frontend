@@ -2,56 +2,20 @@
 
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 import { Box, Divider, Stack, Typography } from '@mui/material';
 
-import ColorTabs from '@/components/ColorTabs';
 import GradientBox from '@/components/GradientBox';
+import KakaoMapComponent from '@/components/KakaoMapComponent';
 import NewsCardHorizontal from '@/components/NewsCardHorizontal';
 import NewsCardVertical from '@/components/NewsCardVertical';
-import Suggestions from '@/components/Suggestion';
-import { articleCategory } from '@/constants/category';
 import color from '@/constants/color';
-import useMutateWithToken from '@/hooks/useMutateWithToken';
-import suggestionData from '@/mocks/suggestion';
-import { Article } from '@/types';
-
-import { getArticleAll, getPopularArticle } from '../api/newsletter';
-import { getUserName } from '../api/user';
+import hiddenGems from '@/mocks/villages';
+import { Article, Village } from '@/types';
 
 const Page = () => {
-  const [selectedTab, setSelectedTab] = useState(articleCategory[0]);
-  const [articles, setArticles] = useState<Article[]>([]);
-  const [popularArticles, setPopularArticles] = useState<Article[]>([]);
-  const [userName, setUserName] = useState<string | null>(null);
-
-  const getUser = useMutateWithToken(getUserName);
-
-  useEffect(() => {
-    getArticleAll().then((res) => {
-      if (res.status) {
-        setArticles(res.data);
-      } else {
-        throw res.message;
-      }
-    });
-    getPopularArticle().then((res) => {
-      if (res.status) {
-        setPopularArticles(res.data);
-      } else {
-        throw res.message;
-      }
-    });
-    getUser().then((res) => {
-      if (res.status) {
-        setUserName(res.data.name);
-      } else {
-        throw res.message;
-      }
-      console.log(`userName: ${res}`);
-    });
-  }, []);
+  const [articles, setArticles] = useState<Village[]>(hiddenGems);
 
   return (
     <Box>
@@ -62,63 +26,35 @@ const Page = () => {
             오늘의 마을
           </Typography>
           <Stack direction="row" justifyContent="center" spacing={2}>
-            <Box flex={1} maxWidth="48%">
-              <NewsCardVertical
-                date="2024-01-20"
-                description="반갑습니다! 명암마을이에요"
-                imageUrl="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTcigw8nf0oF3gp-0pZg_suutLic5NONtaA7A&s"
-                title="명암마을"
-              />
-            </Box>
-            <Box flex={1} maxWidth="48%">
-              <NewsCardVertical
-                date="2024-01-20"
-                description="반갑습니다! 명암마을이에요"
-                imageUrl="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTcigw8nf0oF3gp-0pZg_suutLic5NONtaA7A&s"
-                title="명암마을"
-              />
-            </Box>
-            <Box flex={1} maxWidth="48%">
-              <NewsCardVertical
-                date="2024-01-20"
-                description="반갑습니다! 명암마을이에요"
-                imageUrl="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTcigw8nf0oF3gp-0pZg_suutLic5NONtaA7A&s"
-                title="명암마을"
-              />
-            </Box>
+            {articles.slice(0, 3).map((article, index) => (
+              <Box key={index} flex={1} maxWidth="48%">
+                <NewsCardVertical
+                  date="2024-01-20"
+                  description={article.content}
+                  imageUrl={article.imageUrl}
+                  title={article.title}
+                />
+              </Box>
+            ))}
           </Stack>
-
-          <Typography gutterBottom color={color.blue} component="h1" variant="h4">
-            다른 사람들은 어디에 갔을까?
-          </Typography>
-          {articleCategory.map((tab) => (
-            <Box key={tab.value} hidden={tab.value !== selectedTab.value}>
-              {tab.value === selectedTab.value &&
-                (selectedTab.value === 'ALL'
-                  ? articles.map((item) => (
-                      <NewsCardHorizontal
-                        key={item.id}
-                        content={item.content}
-                        id={item.id}
-                        imageUrl={item.imageUrl}
-                        publishedAt={item.publishedAt.split('T')[0]}
-                        title={item.title}
-                      />
-                    ))
-                  : articles
-                      .filter((item) => item.category === tab.value)
-                      .map((filteredItem) => (
-                        <NewsCardHorizontal
-                          key={filteredItem.id}
-                          content={filteredItem.content}
-                          id={filteredItem.id}
-                          imageUrl={filteredItem.imageUrl}
-                          publishedAt={filteredItem.publishedAt.split('T')[0]}
-                          title={filteredItem.title}
-                        />
-                      )))}
-            </Box>
-          ))}
+          <Box sx={{ marginBottom: 5, marginTop: 5 }}>
+            <Typography gutterBottom color={color.blue} component="h1" variant="h4">
+              지도에서 보는 마을
+            </Typography>
+            <KakaoMapComponent villages={articles} />
+          </Box>
+          <Box>
+            {articles.slice(3).map((filteredItem, index) => (
+              <NewsCardHorizontal
+                key={index}
+                content={filteredItem.content}
+                id={index + 3}
+                imageUrl={filteredItem.imageUrl}
+                publishedAt="2024-01-20"
+                title={filteredItem.title}
+              />
+            ))}
+          </Box>
         </Stack>
         <Stack direction="row" width="25%">
           <Divider flexItem orientation="vertical" sx={{ bgcolor: color.divider, opacity: 0.2 }} />
