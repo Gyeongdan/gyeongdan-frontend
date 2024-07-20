@@ -10,7 +10,7 @@ const useCurrentPath = () => {
   const setCurrentPath = useSetAtom(loginBackPathAtom);
 
   useEffect(() => {
-    const excludedPaths = ['/login/oauth2/code/kakao'];
+    const excludedPaths = ['/login', '/login/oauth2/code/kakao'];
     if (excludedPaths.includes(window.location.pathname)) {
       return;
     }
