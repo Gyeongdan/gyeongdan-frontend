@@ -12,7 +12,7 @@ import NewsCardHorizontal from '@/components/NewsCardHorizontal';
 import Suggestions from '@/components/Suggestion';
 import { articleCategory } from '@/constants/category';
 import color from '@/constants/color';
-import { useMutateWithToken } from '@/hooks/useGetWithToken';
+import useMutateWithToken from '@/hooks/useMutateWithToken';
 import suggestionData from '@/mocks/suggestion';
 import { Article } from '@/types';
 
