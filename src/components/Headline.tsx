@@ -15,7 +15,8 @@ const Headline = ({ title, uploadDate, viewCount, source }: HeadlineProps) => {
       </Typography>
       <Stack alignItems="center" direction="row">
         <Typography variant="h4">
-          {uploadDate || '날짜 없음'} | 조회 {viewCount !== undefined ? viewCount : '0'}회 | {source || '출처 없음'}
+          {uploadDate}
+          {source && ` | 조회 ${viewCount}회 | ${source}`}
         </Typography>
       </Stack>
     </Box>
