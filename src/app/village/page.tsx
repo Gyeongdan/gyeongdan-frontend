@@ -4,7 +4,7 @@
 
 import { useState } from 'react';
 
-import { Box, Divider, Stack, Typography } from '@mui/material';
+import { Box, CardMedia, Divider, Stack, Typography } from "@mui/material";
 
 import GradientBox from '@/components/GradientBox';
 import KakaoMapComponent from '@/components/KakaoMapComponent';
@@ -13,6 +13,7 @@ import NewsCardVertical from '@/components/NewsCardVertical';
 import color from '@/constants/color';
 import hiddenGems from '@/mocks/villages';
 import { Article, Village } from '@/types';
+import CommentCard from "@/components/CommentCard";
 
 const Page = () => {
   const [articles, setArticles] = useState<Village[]>(hiddenGems);
@@ -59,6 +60,24 @@ const Page = () => {
         <Stack direction="row" width="25%">
           <Divider flexItem orientation="vertical" sx={{ bgcolor: color.divider, opacity: 0.2 }} />
           <Stack mt={6} pl={6} spacing={2} width="100%">
+            <Box>
+              <CommentCard
+                sx={{ textAlign: 'center', fontSize: 14 }}
+                isFilled={true}
+                content={
+                  <div style={{ display: 'flex', alignItems: 'center' }}>
+                    <CardMedia
+                      component="img"
+                      image="/images/sanjinee.png"
+                      sx={{ width: 50, height: 50, minWidth: 50, objectFit: 'contain', marginRight: 1 }}
+                    />
+                    <Typography variant="body2" component="p" sx={{ fontWeight: 'bold', fontSize:15, whiteSpace: 'pre-line' }}>
+                      잊혀져 가는 마을,{'\n'}함께 지켜요! 🌿
+                    </Typography>
+                  </div>
+                }
+              />
+            </Box>
             <Box mb={4}>
               <Typography gutterBottom color={color.blue} component="h2" variant="body1">
                 우리 마을 이야기, 경제를 새롭게 보다
