@@ -19,7 +19,7 @@ interface KakaoMapProps {
   villages: Village[];
 }
 
-const KakaoMap= ({ villages }:KakaoMapProps) => {
+const KakaoMap = ({ villages }: KakaoMapProps) => {
   useEffect(() => {
     const initializeMap = () => {
       const container = document.getElementById('map');
