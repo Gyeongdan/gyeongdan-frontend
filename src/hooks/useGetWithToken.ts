@@ -2,8 +2,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useEffect, useState } from 'react';
 
-import { Method } from 'axios';
-
 import useGetUser from '@/hooks/useGetUser';
 
 export function useGetWithToken(apiRequest: (token?: string | null) => Promise<any>, originUser?: any) {
@@ -25,10 +23,8 @@ export function useGetWithToken(apiRequest: (token?: string | null) => Promise<a
   return result;
 }
 
-export function useMutateWithToken(
-  apiRequest: (method: Method, url: string, data?: unknown, token?: string | null) => Promise<any>,
-) {
+export function useMutateWithToken(apiRequest: (token: string, ...props: any[]) => Promise<any>) {
   const user = useGetUser();
 
-  return (method: Method, url: string, data?: unknown) => apiRequest(method, url, data, user?.token || '');
+  return (...props: any[]) => apiRequest(user?.token || '', ...props);
 }
