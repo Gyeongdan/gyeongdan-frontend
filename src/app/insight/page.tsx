@@ -1,7 +1,7 @@
 'use client';
 
 import dynamic from 'next/dynamic';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { Box, Stack, Typography, Grid } from '@mui/material';
 
@@ -16,6 +16,16 @@ import insightsDataList from '@/mocks/insights';
 const ChartRenderer = dynamic(() => import('@/components/ChartRenderer'), { ssr: false });
 
 const Page = () => {
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  if (!isClient) {
+    return null;
+  }
+
   return (
     <GradientBox sx={{ height: '100vh', width: '100vw' }}>
       <Stack alignItems="center">
@@ -33,30 +43,31 @@ const Page = () => {
               justifyContent: 'space-between',
             }}
           >
-            <Box sx={{ flex: 1, marginRight: { md: '1rem', xs: 0 }, marginBottom: { xs: '1.5rem', md: 0 } }}>
-              <CommentCard isCharacter isStroke content={insightData.comment} sx={{ marginBottom: '1.5rem' }} />
-              <CommentCard
-                content={
-                  <Box>
-                    <Typography color={color.gradient_blue_dark} variant="h4">
-                      {insightData.title}
-                    </Typography>
-                    {'\n'}
-                    <Typography color={color.gray_dark} variant="body1">
-                      {insightData.content}
-                    </Typography>
-                  </Box>
-                }
-                sx={{ marginBottom: '1rem', width: '650px' }}
-              />
+            <Box sx={{ flex: 1, mr: { md: '1rem', xs: 0 }, mb: { xs: '1.5rem', md: 0 } }}>
+              <Box mb="1.5rem">
+                <CommentCard isCharacter isStroke content={insightData.comment} />
+              </Box>
+              <Box mb="1rem" width="650px">
+                <CommentCard
+                  content={
+                    <Box>
+                      <Typography color={color.gradient_blue_dark} variant="h4">
+                        {insightData.title}
+                      </Typography>
+                      {'\n'}
+                      <Typography color={color.gray_dark} variant="body1">
+                        {insightData.content}
+                      </Typography>
+                    </Box>
+                  }
+                />
+              </Box>
             </Box>
             <Box sx={{ flex: 1 }}>
               <ChartRenderer data={insightData.chart.data} height={320} layout={insightData.chart.layout} width={480} />
-              <CommentCard
-                isFilled
-                content="나만의 인사이트 만들어보기(공사중 🚧)"
-                sx={{ width: '480px', marginTop: '1rem', textAlign: 'center' }}
-              />
+              <Box mt="1rem" textAlign="center" width="480px">
+                <CommentCard isFilled content="나만의 인사이트 만들어보기(공사중 🚧)" />
+              </Box>
             </Box>
           </Box>
           <Box sx={{ maxWidth: '1500px', marginTop: '2rem' }}>
