@@ -19,7 +19,12 @@ const Page = async ({ params }: { params: { id: number } }) => {
       <Stack alignItems="center" p={10}>
         <Box sx={{ maxWidth: '600px' }}>
           <Box sx={{ marginBottom: '2rem' }}>
-            <Headline source="경단" title={village.title} uploadDate={village.publishedAt} viewCount={3} />
+            <Headline
+              source="경단"
+              title={village.title}
+              uploadDate={village.publishedAt}
+              viewCount={village.viewCount}
+            />
           </Box>
           <CommentCard isCharacter isStroke content={`오늘은 ${village.title}에 대해 소개해줄게😃`} />
           <Box mt="2.5rem">
@@ -47,10 +52,10 @@ const Page = async ({ params }: { params: { id: number } }) => {
           <CommentCard isCharacter isChat content="위치는 여기야📍" />
           <CommentCard isChat content="다음에 같이 가보자!" />
         </Box>
+        <Box>
+          <KakaoMap initialLat={village.latitude} initialLon={village.longitude} level={7} villages={[village]} />
+        </Box>
       </Stack>
-      <Box sx={{ marginTop: -2 }}>
-        <KakaoMap initialLat={village.latitude} initialLon={village.longitude} level={7} villages={[village]} />
-      </Box>
     </GradientBox>
   );
 };

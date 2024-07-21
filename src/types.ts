@@ -36,4 +36,5 @@ export interface Village {
   latitude: number;
   longitude: number;
   publishedAt: string;
+  viewCount: number;
 }

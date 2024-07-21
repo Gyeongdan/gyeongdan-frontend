@@ -11,6 +11,7 @@ const hiddenGems: Village[] = [
     latitude: 37.3793,
     longitude: 128.6616,
     publishedAt: '2024-07-20',
+    viewCount: 3,
   },
   {
     id: 2,
@@ -22,6 +23,7 @@ const hiddenGems: Village[] = [
     latitude: 36.3446,
     longitude: 129.0571,
     publishedAt: '2024-07-20',
+    viewCount: 2,
   },
   {
     id: 3,
@@ -33,6 +35,7 @@ const hiddenGems: Village[] = [
     latitude: 38.1016,
     longitude: 127.9897,
     publishedAt: '2024-07-20',
+    viewCount: 3,
   },
   {
     id: 4,
@@ -44,6 +47,7 @@ const hiddenGems: Village[] = [
     latitude: 34.6421,
     longitude: 126.7658,
     publishedAt: '2024-07-20',
+    viewCount: 5,
   },
   {
     id: 5,
@@ -55,6 +59,7 @@ const hiddenGems: Village[] = [
     latitude: 35.0633,
     longitude: 126.5167,
     publishedAt: '2024-07-20',
+    viewCount: 6,
   },
 ];
 
