@@ -50,7 +50,7 @@ const Page = async ({ params }: { params: { id: number } }) => {
           </Box>
           <Typography color={color.blue} fontSize="20px" py={2} variant="h3" />
           <CommentCard isCharacter isChat content={`${village.title} 위치는 여기야`} />
-          <CommentCard isChat content="다음에 같이 가보자!" />
+          <CommentCard isChat content="기억해뒀다가 다음에 가보자~~" />
         </Box>
         <Box style={{ alignItems: 'center' }} width={600}>
           <KakaoMap
