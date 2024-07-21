@@ -12,7 +12,7 @@ import color from '@/constants/color';
 import hiddenGems from '@/mocks/villages';
 
 const Page = async ({ params }: { params: { id: number } }) => {
-  const village = hiddenGems[params.id];
+  const village = hiddenGems[params.id - 1];
 
   return (
     <GradientBox>

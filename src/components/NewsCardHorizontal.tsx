@@ -10,16 +10,17 @@ interface NewsCardHorizontalProps {
   content: string;
   publishedAt: string;
   imageUrl?: string;
+  path: string;
 }
 
-const NewsCardHorizontal = ({ id, title, content, publishedAt, imageUrl }: NewsCardHorizontalProps) => {
+const NewsCardHorizontal = ({ id, title, content, publishedAt, imageUrl, path }: NewsCardHorizontalProps) => {
   return (
     <Stack alignItems="center" direction="row" height="180px" justifyContent="space-between">
       <Stack>
         <Typography color={color.blue} fontWeight="600" mb={1} variant="body2">
           {publishedAt}
         </Typography>
-        <Link color="inherit" href={`/newsletter/${id}`} underline="none">
+        <Link color="inherit" href={`/${path}/${id}`} underline="none">
           <Typography
             mb={1}
             sx={{

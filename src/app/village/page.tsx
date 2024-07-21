@@ -39,7 +39,9 @@ const Page = () => {
                 <NewsCardVertical
                   date={village.publishedAt}
                   description={village.content}
+                  id={village.id}
                   imageUrl={village.imageUrl}
+                  path="village"
                   title={village.title}
                 />
               </Box>
@@ -58,6 +60,7 @@ const Page = () => {
                 content={filteredItem.content}
                 id={filteredItem.id}
                 imageUrl={filteredItem.imageUrl}
+                path="village"
                 publishedAt="2024-01-20"
                 title={filteredItem.title}
               />
