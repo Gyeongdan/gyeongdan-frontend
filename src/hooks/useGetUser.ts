@@ -8,6 +8,12 @@ export const useGetUser = () => {
 };
 
 export const useGetUserProfile = () => {
+  const user = useGetUser();
   const userProfile = useAtomValue(userProfileAtom);
-  return userProfile;
+
+  if (user.isLogin) {
+    return userProfile;
+  }
+
+  return null;
 };

@@ -43,7 +43,7 @@ const Page = () => {
   }, []);
 
   useEffect(() => {
-    if (user?.isLogin) {
+    if (user.isLogin) {
       getUser(user.token).then((res) => {
         if (res.status) {
           setUserName(res.data.name);

@@ -12,7 +12,7 @@ const useUpdateUserProfile = () => {
   const setUserProfile = useSetAtom(userProfileAtom);
 
   useEffect(() => {
-    if (user?.isLogin) {
+    if (user.isLogin) {
       getUser(user.token).then((res) => {
         if (res.status) {
           setUserProfile({
