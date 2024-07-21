@@ -14,6 +14,7 @@ const useCurrentPath = () => {
     if (excludedPaths.includes(window.location.pathname)) {
       return;
     }
+    console.log('useCurrentPath', window.location.pathname);
 
     setCurrentPath(window.location.pathname);
   }, [setCurrentPath]);

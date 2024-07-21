@@ -3,12 +3,14 @@
 import { useState, useEffect } from 'react';
 
 import { Avatar, Box, Button, Link, Stack, Typography } from '@mui/material';
+import { useAtomValue } from 'jotai';
 
 import { getUser } from '@/app/api/user';
 import { mainCategory } from '@/constants/category';
 import color from '@/constants/color';
 import useCurrentPath from '@/hooks/useCurrentPath';
 import useGetUser from '@/hooks/useGetUser';
+import { loginBackPathAtom } from '@/state/atom';
 
 const Header = () => {
   const [show, setShow] = useState(true);
@@ -47,6 +49,12 @@ const Header = () => {
   }, [user]);
 
   useCurrentPath();
+
+  const loginBackPath = useAtomValue(loginBackPathAtom);
+
+  useEffect(() => {
+    console.log('loginBackPathAtom', loginBackPath);
+  }, [loginBackPath]);
 
   return (
     <>
