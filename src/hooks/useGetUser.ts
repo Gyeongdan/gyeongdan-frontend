@@ -1,3 +1,5 @@
+import { useEffect, useState } from 'react';
+
 import { useAtomValue } from 'jotai';
 
 import { userAtom, userProfileAtom } from '@/state/atom';
@@ -10,10 +12,13 @@ export const useGetUser = () => {
 export const useGetUserProfile = () => {
   const user = useGetUser();
   const userProfile = useAtomValue(userProfileAtom);
+  const [result, setResult] = useState<{ name: string; profileImage: string } | null>(null);
 
-  if (user.isLogin) {
-    return userProfile;
-  }
+  useEffect(() => {
+    if (user.isLogin) {
+      setResult(userProfile);
+    }
+  }, [user, userProfile]);
 
-  return null;
+  return result;
 };
