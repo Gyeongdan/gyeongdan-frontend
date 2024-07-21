@@ -49,7 +49,7 @@ const Page = () => {
             <Typography gutterBottom color={color.blue} component="h1" variant="h4">
               지도에서 보는 마을
             </Typography>
-            <KakaoMap villages={villages} />
+            <KakaoMap initialLat={36.5} initialLon={127.5} level={13} villages={villages} />
           </Box>
           <Box>
             {villages.slice(3).map((filteredItem) => (

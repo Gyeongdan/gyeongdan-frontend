@@ -16,10 +16,13 @@ interface Village {
 }
 
 interface KakaoMapProps {
+  initialLat: number;
+  initialLon: number;
+  level: number;
   villages: Village[];
 }
 
-const KakaoMap = ({ villages }: KakaoMapProps) => {
+const KakaoMap = ({ villages, initialLat, initialLon, level }: KakaoMapProps) => {
   useEffect(() => {
     const initializeMap = () => {
       const container = document.getElementById('map');
@@ -28,8 +31,8 @@ const KakaoMap = ({ villages }: KakaoMapProps) => {
       }
 
       const options = {
-        center: new window.kakao.maps.LatLng(36.5, 127.5),
-        level: 13,
+        center: new window.kakao.maps.LatLng(initialLat, initialLon),
+        level,
       };
       const map = new window.kakao.maps.Map(container, options);
 
