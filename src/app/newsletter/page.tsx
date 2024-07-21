@@ -10,20 +10,20 @@ import NewsCardHorizontal from '@/components/NewsCardHorizontal';
 import Suggestions from '@/components/Suggestion';
 import { articleCategory } from '@/constants/category';
 import color from '@/constants/color';
-import useGetUser from '@/hooks/useGetUser';
+import { useGetUserProfile } from '@/hooks/useGetUser';
+import useUpdateUserProfile from '@/hooks/useUpdateUser';
 import suggestionData from '@/mocks/suggestion';
 import { Article } from '@/types';
 
 import { getArticleAll, getPopularArticle } from '../api/newsletter';
-import { getUser } from '../api/user';
 
 const Page = () => {
   const [selectedTab, setSelectedTab] = useState(articleCategory[0]);
   const [articles, setArticles] = useState<Article[]>([]);
   const [popularArticles, setPopularArticles] = useState<Article[]>([]);
 
-  const user = useGetUser();
-  const [userName, setUserName] = useState<string | null>(null);
+  const userProfile = useGetUserProfile();
+  useUpdateUserProfile();
 
   useEffect(() => {
     getArticleAll().then((res) => {
@@ -41,18 +41,6 @@ const Page = () => {
       }
     });
   }, []);
-
-  useEffect(() => {
-    if (user.isLogin) {
-      getUser(user.token).then((res) => {
-        if (res.status) {
-          setUserName(res.data.name);
-        } else {
-          throw res.message;
-        }
-      });
-    }
-  }, [user]);
 
   return (
     <Box>
@@ -93,10 +81,10 @@ const Page = () => {
         <Stack direction="row" width="25%">
           <Divider flexItem orientation="vertical" sx={{ bgcolor: color.divider, opacity: 0.2 }} />
           <Stack mt={6} pl={6} spacing={6} width="100%">
-            {userName && (
+            {userProfile && (
               <>
-                <Suggestions content={suggestionData} title={`${userName}님을 위한 추천 기사`} />
-                <Suggestions content={suggestionData} title={`${userName}님과 비슷한 유형이 관심있어요!`} />
+                <Suggestions content={suggestionData} title={`${userProfile.name}님을 위한 추천 기사`} />
+                <Suggestions content={suggestionData} title={`${userProfile.name}님과 비슷한 유형이 관심있어요!`} />
               </>
             )}
             <Suggestions content={popularArticles} title="지금 인기있는 기사" />
