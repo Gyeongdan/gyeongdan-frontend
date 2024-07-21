@@ -101,7 +101,13 @@ const Page = () => {
                     sx={{ cursor: 'pointer' }}
                     onClick={() => handleInsightClick(insight)}
                   >
-                    <NewsCardVertical date={insight.date} description={insight.content} title={insight.title} />
+                    <NewsCardVertical
+                      date={insight.date}
+                      description={insight.content}
+                      id={insight.id}
+                      path="insight"
+                      title={insight.title}
+                    />
                   </Box>
                 </Grid>
               ))}

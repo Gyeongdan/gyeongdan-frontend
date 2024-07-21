@@ -39,7 +39,9 @@ const Page = () => {
                 <NewsCardVertical
                   date={village.publishedAt}
                   description={village.content}
+                  id={village.id}
                   imageUrl={village.imageUrl}
+                  path="village"
                   title={village.title}
                 />
               </Box>
@@ -49,7 +51,7 @@ const Page = () => {
             <Typography gutterBottom color={color.blue} component="h1" variant="h4">
               지도에서 보는 마을
             </Typography>
-            <KakaoMap villages={villages} />
+            <KakaoMap isMarkerClicked initialLat={36.5} initialLon={127.5} level={13} villages={villages} />
           </Box>
           <Box>
             {villages.slice(3).map((filteredItem) => (
@@ -58,6 +60,7 @@ const Page = () => {
                 content={filteredItem.content}
                 id={filteredItem.id}
                 imageUrl={filteredItem.imageUrl}
+                path="village"
                 publishedAt="2024-01-20"
                 title={filteredItem.title}
               />

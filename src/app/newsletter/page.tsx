@@ -58,6 +58,7 @@ const Page = () => {
                           content={item.content}
                           id={item.id}
                           imageUrl={item.imageUrl}
+                          path="newsletter"
                           publishedAt={item.publishedAt.split('T')[0]}
                           title={item.title}
                         />
@@ -70,6 +71,7 @@ const Page = () => {
                             content={filteredItem.content}
                             id={filteredItem.id}
                             imageUrl={filteredItem.imageUrl}
+                            path="newsletter"
                             publishedAt={filteredItem.publishedAt.split('T')[0]}
                             title={filteredItem.title}
                           />

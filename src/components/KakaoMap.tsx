@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useEffect } from 'react';
 
 declare global {
@@ -11,30 +13,35 @@ interface Village {
   title: string;
   content: string;
   imageUrl: string;
-  x: number;
-  y: number;
+  latitude: number;
+  longitude: number;
 }
 
 interface KakaoMapProps {
+  initialLat: number;
+  initialLon: number;
+  level: number;
   villages: Village[];
+  isMarkerClicked?: boolean;
 }
 
-const KakaoMap = ({ villages }: KakaoMapProps) => {
+const KakaoMap = ({ villages, initialLat, initialLon, level, isMarkerClicked = false }: KakaoMapProps) => {
   useEffect(() => {
     const initializeMap = () => {
       const container = document.getElementById('map');
       if (!container) {
+        console.error('Map container not found');
         return;
       }
 
       const options = {
-        center: new window.kakao.maps.LatLng(36.5, 127.5),
-        level: 13,
+        center: new window.kakao.maps.LatLng(initialLat, initialLon),
+        level,
       };
       const map = new window.kakao.maps.Map(container, options);
 
       villages.forEach((village) => {
-        const markerPosition = new window.kakao.maps.LatLng(village.x, village.y);
+        const markerPosition = new window.kakao.maps.LatLng(village.latitude, village.longitude);
         const marker = new window.kakao.maps.Marker({
           position: markerPosition,
         });
@@ -53,7 +60,9 @@ const KakaoMap = ({ villages }: KakaoMapProps) => {
         });
 
         window.kakao.maps.event.addListener(marker, 'click', () => {
-          window.location.href = `/village/${village.id}`;
+          if (isMarkerClicked) {
+            window.location.href = `/village/${village.id}`;
+          }
         });
       });
     };
@@ -72,15 +81,19 @@ const KakaoMap = ({ villages }: KakaoMapProps) => {
           window.kakao.maps.load(() => {
             initializeMap();
           });
+        } else {
+          console.error('Kakao maps load function is not available');
         }
       };
-      script.onerror = () => {};
+      script.onerror = () => {
+        console.error('Failed to load Kakao Maps script');
+      };
 
       document.head.appendChild(script);
     };
 
     loadKakaoMap();
-  }, [villages]);
+  }, [villages, initialLat, initialLon, level, isMarkerClicked]);
 
   return (
     <div
