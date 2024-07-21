@@ -13,6 +13,10 @@ const nextConfig = {
       },
       {
         protocol: 'https',
+        hostname: 'pimg.mk.co.kr',
+      },
+      {
+        protocol: 'https',
         hostname: 'img.hankyung.com',
       },
       {

@@ -5,4 +5,9 @@ export const userAtom = atomWithStorage('user', {
   isLogin: false,
 });
 
+export const userProfileAtom = atomWithStorage('userProfile', {
+  name: '',
+  profileImage: '',
+});
+
 export const loginBackPathAtom = atomWithStorage('loginBackPath', '/');

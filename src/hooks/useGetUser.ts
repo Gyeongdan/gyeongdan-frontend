@@ -2,17 +2,28 @@ import { useEffect, useState } from 'react';
 
 import { useAtomValue } from 'jotai';
 
-import { userAtom } from '@/state/atom';
+import { userAtom, userProfileAtom } from '@/state/atom';
 
-const useGetUser = () => {
-  const [isMounted, setIsMounted] = useState(false);
+export const useGetUser = () => {
   const user = useAtomValue(userAtom);
-
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
-
-  return isMounted ? user : null;
+  return user;
 };
 
-export default useGetUser;
+export const useGetUserProfile = () => {
+  const user = useGetUser();
+  const userProfile = useAtomValue(userProfileAtom);
+
+  const [result, setResult] = useState<{ name: string; profileImage: string } | null>(
+    userProfile.name === '' && userProfile.profileImage === '' ? null : userProfile,
+  );
+
+  useEffect(() => {
+    if (user.isLogin) {
+      setResult(userProfile);
+    } else {
+      setResult(null);
+    }
+  }, [user, userProfile]);
+
+  return result;
+};
