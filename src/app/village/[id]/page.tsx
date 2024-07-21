@@ -49,7 +49,7 @@ const Page = async ({ params }: { params: { id: number } }) => {
         </Box>
       </Stack>
       <Box sx={{ marginTop: -2 }}>
-        <KakaoMap villages={[village]} />
+        <KakaoMap initialLat={village.latitude} initialLon={village.longitude} level={7} villages={[village]} />
       </Box>
     </GradientBox>
   );

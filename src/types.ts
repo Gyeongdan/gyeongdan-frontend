@@ -33,7 +33,7 @@ export interface Village {
   title: string;
   content: string;
   imageUrl: string;
-  x: number;
-  y: number;
+  latitude: number;
+  longitude: number;
   publishedAt: string;
 }

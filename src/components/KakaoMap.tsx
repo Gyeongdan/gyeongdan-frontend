@@ -11,8 +11,8 @@ interface Village {
   title: string;
   content: string;
   imageUrl: string;
-  x: number;
-  y: number;
+  latitude: number;
+  longitude: number;
 }
 
 interface KakaoMapProps {
@@ -37,7 +37,7 @@ const KakaoMap = ({ villages, initialLat, initialLon, level }: KakaoMapProps) =>
       const map = new window.kakao.maps.Map(container, options);
 
       villages.forEach((village) => {
-        const markerPosition = new window.kakao.maps.LatLng(village.x, village.y);
+        const markerPosition = new window.kakao.maps.LatLng(village.latitude, village.longitude);
         const marker = new window.kakao.maps.Marker({
           position: markerPosition,
         });
