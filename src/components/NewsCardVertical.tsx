@@ -22,38 +22,40 @@ const NewsCardVertical = ({ id, date, title, description, imageUrl, path }: News
         )}
       </Link>
       <CardContent>
-        <Typography color={color.blue} fontWeight="600" mb={1} variant="body2">
-          {date}
-        </Typography>
-        <Typography
-          mb={1}
-          sx={{
-            overflow: 'hidden',
-            WebkitLineClamp: 2,
-            WebkitBoxOrient: 'vertical',
-            display: '-webkit-box',
-          }}
-          variant="h5"
-        >
-          {title}
-        </Typography>
-        <Typography
-          sx={{
-            overflow: 'hidden',
-            WebkitLineClamp: 3,
-            WebkitBoxOrient: 'vertical',
-            display: '-webkit-box',
-          }}
-          variant="body2"
-        >
-          {description}
-        </Typography>
+        <Link color="inherit" href={`/${path}/${id}`} underline="none">
+          <Typography color={color.blue} fontWeight="600" mb={1} variant="body2">
+            {date}
+          </Typography>
+          <Typography
+            mb={1}
+            sx={{
+              overflow: 'hidden',
+              WebkitLineClamp: 2,
+              WebkitBoxOrient: 'vertical',
+              display: '-webkit-box',
+            }}
+            variant="h5"
+          >
+            {title}
+          </Typography>
+          <Typography
+            sx={{
+              overflow: 'hidden',
+              WebkitLineClamp: 3,
+              WebkitBoxOrient: 'vertical',
+              display: '-webkit-box',
+            }}
+            variant="body2"
+          >
+            {description}
+          </Typography>
+        </Link>
       </CardContent>
       {imageUrl && (
         <Link
           borderRadius={2}
           height={130}
-          href={`/newsletter/${id}`}
+          href={`/${path}/${id}`}
           minWidth={230}
           ml={3}
           mt={2}
