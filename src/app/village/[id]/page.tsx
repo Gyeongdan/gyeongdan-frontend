@@ -49,11 +49,17 @@ const Page = async ({ params }: { params: { id: number } }) => {
             </Card>
           </Box>
           <Typography color={color.blue} fontSize="20px" py={2} variant="h3" />
-          <CommentCard isCharacter isChat content="위치는 여기야📍" />
+          <CommentCard isCharacter isChat content={`${village.title} 위치는 여기야`} />
           <CommentCard isChat content="다음에 같이 가보자!" />
         </Box>
-        <Box>
-          <KakaoMap initialLat={village.latitude} initialLon={village.longitude} level={7} villages={[village]} />
+        <Box style={{ alignItems: 'center' }} width={600}>
+          <KakaoMap
+            initialLat={village.latitude}
+            initialLon={village.longitude}
+            isMarkerClicked={false}
+            level={7}
+            villages={[village]}
+          />
         </Box>
       </Stack>
     </GradientBox>
