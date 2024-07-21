@@ -1,18 +1,13 @@
-import { useEffect, useState } from 'react';
-
 import { useAtomValue } from 'jotai';
 
-import { userAtom } from '@/state/atom';
+import { userAtom, userProfileAtom } from '@/state/atom';
 
-const useGetUser = () => {
-  const [isMounted, setIsMounted] = useState(false);
+export const useGetUser = () => {
   const user = useAtomValue(userAtom);
-
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
-
-  return isMounted ? user : null;
+  return user;
 };
 
-export default useGetUser;
+export const useGetUserProfile = () => {
+  const userProfile = useAtomValue(userProfileAtom);
+  return userProfile;
+};
