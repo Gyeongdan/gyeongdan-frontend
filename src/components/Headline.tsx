@@ -2,9 +2,9 @@ import { Box, Typography, Stack } from '@mui/material';
 
 interface HeadlineProps {
   title: string;
-  uploadDate?: string;
-  viewCount?: number;
-  source?: string;
+  uploadDate: string;
+  viewCount: number;
+  source: string;
 }
 
 const Headline = ({ title, uploadDate, viewCount, source }: HeadlineProps) => {
@@ -15,8 +15,7 @@ const Headline = ({ title, uploadDate, viewCount, source }: HeadlineProps) => {
       </Typography>
       <Stack alignItems="center" direction="row">
         <Typography variant="h4">
-          {uploadDate}
-          {source && ` | 조회 ${viewCount}회 | ${source}`}
+          {uploadDate} | 조회 {viewCount}회 | {source}
         </Typography>
       </Stack>
     </Box>

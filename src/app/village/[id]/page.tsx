@@ -19,7 +19,7 @@ const Page = async ({ params }: { params: { id: number } }) => {
       <Stack alignItems="center" p={10}>
         <Box sx={{ maxWidth: '600px' }}>
           <Box sx={{ marginBottom: '2rem' }}>
-            <Headline title={village.title} uploadDate={village.publishedAt} />
+            <Headline source="경단" title={village.title} uploadDate={village.publishedAt} viewCount={3} />
           </Box>
           <CommentCard isCharacter isStroke content={`오늘은 ${village.title}에 대해 소개해줄게😃`} />
           <Box mt="2.5rem">
