@@ -3,21 +3,18 @@
 import { useState, useEffect } from 'react';
 
 import { Avatar, Box, Button, Link, Stack, Typography } from '@mui/material';
-import { useAtomValue } from 'jotai';
 
-import { getUser } from '@/app/api/user';
 import { mainCategory } from '@/constants/category';
 import color from '@/constants/color';
-import useCurrentPath from '@/hooks/useCurrentPath';
-import useGetUser from '@/hooks/useGetUser';
-import { loginBackPathAtom } from '@/state/atom';
+import { useGetUserProfile } from '@/hooks/useGetUser';
+import useUpdateUserProfile from '@/hooks/useUpdateUser';
 
 const Header = () => {
   const [show, setShow] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
 
-  const user = useGetUser();
-  const [userProfile, setUserProfile] = useState<string | null>(null);
+  const userProfile = useGetUserProfile();
+  useUpdateUserProfile();
 
   useEffect(() => {
     const controlHeader = () => {
@@ -35,26 +32,6 @@ const Header = () => {
       window.removeEventListener('scroll', controlHeader);
     };
   }, [lastScrollY]);
-
-  useEffect(() => {
-    if (user?.isLogin) {
-      getUser(user.token).then((res) => {
-        if (res.status) {
-          setUserProfile(res.data.profileImage);
-        } else {
-          throw res.message;
-        }
-      });
-    }
-  }, [user]);
-
-  useCurrentPath();
-
-  const loginBackPath = useAtomValue(loginBackPathAtom);
-
-  useEffect(() => {
-    console.log('loginBackPathAtom', loginBackPath);
-  }, [loginBackPath]);
 
   return (
     <>
@@ -93,7 +70,7 @@ const Header = () => {
               </Link>
             ))}
             {userProfile ? (
-              <Avatar alt="profileImage" src={userProfile || ''} sx={{ width: 28, height: 28 }} />
+              <Avatar alt="profileImage" src={userProfile.profileImage} sx={{ width: 28, height: 28 }} />
             ) : (
               <Link href="/login" underline="none">
                 <Button color="primary" sx={{ width: '100px' }} variant="outlined">
