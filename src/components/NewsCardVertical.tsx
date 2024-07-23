@@ -1,5 +1,3 @@
-import Image from 'next/image';
-
 import { Card, CardContent, CardMedia, Link, Typography } from '@mui/material';
 
 import color from '@/constants/color';
