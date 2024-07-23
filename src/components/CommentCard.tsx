@@ -1,8 +1,8 @@
 'use client';
 
 import { ReactNode } from 'react';
-import { useInView } from 'react-intersection-observer';
 
+import { keyframes } from '@emotion/react';
 import { Box, Card, CardMedia, SxProps, Typography } from '@mui/material';
 import { Theme } from '@mui/system';
 
@@ -14,8 +14,22 @@ interface CommentCardProps {
   isFilled?: boolean;
   isCharacter?: boolean;
   isChat?: boolean;
+  isFixed?: boolean;
   sx?: SxProps<Theme>;
+  positionY?: string;
 }
+
+const gradientAnimation = keyframes`
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+`;
 
 const CommentCard = ({
   content,
@@ -23,31 +37,26 @@ const CommentCard = ({
   isFilled = false,
   isCharacter = false,
   isChat = false,
+  isFixed = false,
   sx,
+  positionY = '40px',
 }: CommentCardProps) => {
-  const { ref, inView } = useInView({
-    threshold: 0.1,
-  });
-
   return (
     <Card
-      ref={ref}
       sx={{
         display: 'flex',
         boxShadow: 'none',
         alignItems: 'center',
         bgcolor: 'transparent',
-        ...(isChat && {
-          opacity: inView ? 1 : 0,
-          transform: inView ? 'translateY(0)' : 'translateY(20px)',
-          transition: 'opacity 0.6s ease-out, transform 0.6s ease-out',
-        }),
-        ...(!isChat && {
-          width: '100%',
-        }),
-        ...(!isCharacter && {
-          mb: 1.3,
-        }),
+        position: isFixed ? 'fixed' : 'relative',
+        bottom: isFixed ? positionY : 'unset',
+        right: isFixed ? '20px' : 'unset',
+        zIndex: isFixed ? 9999 : 'unset',
+        transition: 'transform 0.3s ease-in-out',
+        '&:hover': {
+          transform: 'scale(1.1)',
+        },
+        ...sx,
       }}
     >
       {isCharacter && (
@@ -59,10 +68,10 @@ const CommentCard = ({
           borderRadius: 5,
           ml: 1,
           padding: '2px',
-          background: isStroke ? `linear-gradient(${color.gradient_blue_dark}, ${color.gradient_blue_light})` : 'none',
-          ...(!isChat && {
-            width: '100%',
-          }),
+          background: isStroke
+            ? `linear-gradient(45deg, ${color.gradient_blue_dark}, ${color.gradient_blue_light})`
+            : 'none',
+          width: '100%',
         }}
       >
         <Box
@@ -70,8 +79,10 @@ const CommentCard = ({
           padding={2}
           sx={{
             background: isFilled
-              ? `linear-gradient(${color.gradient_blue_dark}, ${color.gradient_blue_light})`
+              ? `linear-gradient(45deg, ${color.gradient_blue_dark}, ${color.gradient_blue_light})`
               : 'white',
+            backgroundSize: '200% 200%',
+            animation: isFixed && isFilled ? `${gradientAnimation} 6s ease infinite` : 'none',
             ...sx,
           }}
         >
