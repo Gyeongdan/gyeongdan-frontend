@@ -102,6 +102,7 @@ const Page = () => {
                     onClick={() => handleInsightClick(insight)}
                   >
                     <NewsCardVertical
+                      isMock
                       date={insight.date}
                       description={insight.content}
                       id={insight.id}
